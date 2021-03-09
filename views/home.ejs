@@ -1,13 +1,14 @@
 <%- include('partials/head') %>
 <section>
     <div class="search-container">
-        <form>
+        <form method="post" action="/">
             <div>
                 <input
                     data-form-from
                     type="text"
                     required
                     aria-label="Departure location"
+                    name="from"
                 />
                 <label>From</label>
             </div>
@@ -18,6 +19,7 @@
                     type="text"
                     required
                     aria-label="Destination"
+                    name="to"
                 />
                 <label>To</label>
             </div>
@@ -28,11 +30,14 @@
                     type="date"
                     required
                     aria-label="Departure date"
+                    name="date"
                 />
-                <label id="dateLabel">Date (yyyy-mm-dd)</label>
+                <!-- <label id="dateLabel">Date (yyyy-mm-dd)</label> For other browsers (then Chrome) -->
             </div>
 
-            <button id="search-btn" class="btn search-btn">Search</button>
+            <button id="search-btn" class="btn search-btn" type="submit">
+                Search
+            </button>
         </form>
 
         <!-- Notification -->
