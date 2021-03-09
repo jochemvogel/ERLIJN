@@ -1,0 +1,33 @@
+/* ===== UTIL CLASSES ===== */
+
+/* Imported at the top of style.css, because of specificity reasons */
+.hidden {
+    visibility: hidden;
+}
+
+.btn {
+    background-color: var(--blue);
+    color: var(--light-grey);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px hsla(var(--black-hsl-values), 0.25);
+    height: 3em;
+    width: 15em;
+}
+
+.btn:hover {
+    transition: transform 0.1s ease-in;
+    box-shadow: 0 3px 5px hsla(var(--black-hsl-values), 0.25);
+    transform: scale(1.02);
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.btn:focus {
+    outline: none;
+    transform: scale(1.01);
+    background-color: var(--dark-blue);
+}
