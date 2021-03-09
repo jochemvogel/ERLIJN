@@ -4,8 +4,6 @@ const app = express();
 const port = 3000;
 
 app.use(express.static("static"));
-app.use("/css", express.static(__dirname + "static/css"));
-app.use("/js", express.static(__dirname + "static/js"));
 
 app.set("view engine", "ejs");
 app.set("views", "views");
