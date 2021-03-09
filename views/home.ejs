@@ -1,0 +1,82 @@
+<%- include('partials/head') %>
+<!-- HOME ROUTE -->
+<section data-route="home">
+    <div class="search-container">
+        <form>
+            <div>
+                <input
+                    data-form-from
+                    type="text"
+                    required
+                    aria-label="Departure location"
+                />
+                <label>From</label>
+            </div>
+
+            <div>
+                <input
+                    data-form-to
+                    type="text"
+                    required
+                    aria-label="Destination"
+                />
+                <label>To</label>
+            </div>
+
+            <div>
+                <input
+                    data-form-date
+                    type="date"
+                    required
+                    aria-label="Departure date"
+                />
+                <label id="dateLabel">Date (yyyy-mm-dd)</label>
+            </div>
+
+            <button id="search-btn" class="btn search-btn">Search</button>
+        </form>
+
+        <!-- Notification -->
+        <div class="error-notification hidden" aria-hidden="true" hidden>
+            <p data-error-notification></p>
+        </div>
+    </div>
+
+    <!-- Card container -->
+    <div class="card-container"></div>
+
+    <!-- Details modal -->
+    <div class="card-modal details-modal hidden" aria-hidden="true" hidden>
+        <div class="card-modal__content">
+            <button data-modal-close class="card-modal__close">×</button>
+            <h2 data-modal-airports></h2>
+            <h3 data-modal-price class="card-modal__modal-price"></h3>
+            <p>
+                Airline:
+                <span data-modal-airline></span>
+            </p>
+            <p>
+                Direct flight:
+                <span data-modal-direct></span>
+            </p>
+            <hr />
+            <p>
+                From:
+                <span data-modal-from></span>
+            </p>
+            <p>
+                To:
+                <span data-modal-to></span>
+            </p>
+            <p>
+                Departure Date:
+                <span data-modal-date></span>
+            </p>
+            <img
+                src="/"
+                alt="Random image of destination from unsplash (not working)"
+            />
+            <button data-modal-btn class="btn">Book</button>
+        </div>
+    </div>
+</section>

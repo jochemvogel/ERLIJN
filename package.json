@@ -1,0 +1,25 @@
+{
+    "name": "progressive-web-apps-2021",
+    "description": "In this course we will convert the client side web application previously made Web App From Scratch into a server side rendered application. We also add functionalities based on the Service Worker and turn the application into a Progressive Web App. Ultimately we are going to implement a series of optimisations to improve the performance of the application.",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jochemvogel/progressive-web-apps-2021.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jochemvogel/progressive-web-apps-2021/issues"
+    },
+    "homepage": "https://github.com/jochemvogel/progressive-web-apps-2021#readme",
+    "dependencies": {
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "node-fetch": "^2.6.1"
+    }
+}

@@ -1,0 +1,51 @@
+<%- include('partials/head') %>
+
+<section data-route="checkout">
+    <div class="checkout__content">
+        <a href="#">&larr; Go Back</a>
+        <h2>Checkout</h2>
+
+        <hr />
+
+        <h3>Summary</h3>
+        <p>
+            From:
+            <span data-checkout-from></span>
+        </p>
+        <p>
+            To:
+            <span data-checkout-to></span>
+        </p>
+        <p>
+            Leaving:
+            <span data-checkout-date></span>
+        </p>
+        <p>
+            Price:
+            <span data-checkout-price></span>
+        </p>
+
+        <hr />
+
+        <h3>Enter your personal data</h3>
+
+        <form>
+            <div>
+                <input type="text" required />
+                <label>Full Name*</label>
+            </div>
+
+            <div>
+                <input type="email" required />
+                <label>Email address*</label>
+            </div>
+
+            <div>
+                <input type="tel" required />
+                <label>Phone number*</label>
+            </div>
+
+            <button id="checkout-btn" class="btn">Confirm</button>
+        </form>
+    </div>
+</section>
