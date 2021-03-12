@@ -1,5 +1,3 @@
-export { formatDate, capitalizeFirstLetter };
-
 /**
  * Formats the date from API to usable (European) date
  *
@@ -22,3 +20,5 @@ function formatDate(dateStr) {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+module.exports = { formatDate, capitalizeFirstLetter };

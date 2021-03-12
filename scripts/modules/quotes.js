@@ -1,9 +1,6 @@
-import { API_URL } from "../constants/api.js";
-import { setDetailButtonListener } from "./details.js";
-import { setNotification } from "../utils/notification.js";
-import { getResults } from "../utils/fetch.js";
-
-export { getQuotesData, setQuotesUrl };
+const { API_URL } = require("../constants/api");
+const { setDetailButtonListener } = require("./details");
+const { getResults } = require("../utils/fetch");
 
 /**
  * Get all the data that the user needs
@@ -14,12 +11,12 @@ async function getQuotesData(url) {
     const result = await getResults(url);
 
     if (result === undefined) {
-        setNotification("You filled in a date in the past");
+        console.log("You filled in a date in the past");
         return;
     }
 
     if (result.Quotes.length <= 0) {
-        setNotification("No tickets/flights available");
+        console.log("No tickets/flights available");
         return;
     }
 
@@ -99,3 +96,5 @@ function setQuotesUrl(fromLocationCode, toLocationCode, departureDate) {
     // Browse quotes
     return `${API_URL}/browsequotes/v1.0/${country}/${currency}/${locale}/${fromLocationCode}/${toLocationCode}/${departureDate}`;
 }
+
+module.exports = { getQuotesData, setQuotesUrl };

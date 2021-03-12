@@ -1,10 +1,7 @@
-import { getQuotesData, setQuotesUrl } from "./quotes.js";
-import { API_URL } from "../constants/api.js";
-import { addAirportCodesToLocalStorage } from "../utils/localStorage.js";
-import { setNotification } from "../utils/notification.js";
-import { getResults } from "../utils/fetch.js";
-
-export { convertLocations };
+const { getQuotesData, setQuotesUrl } = require("./quotes");
+const { API_URL } = require("../constants/api");
+const { addAirportCodesToLocalStorage } = require("../utils/localStorage");
+const { getResults } = require("../utils/fetch");
 
 /**
  * The quotes endpoint only accepts specific airport codes like AMS-sky and JFK-sky
@@ -23,18 +20,6 @@ async function convertLocations(fromInput, toInput, dateInput) {
     locationArr.push(toInput);
 
     const convertedLocationArr = await createNewArray(locationArr);
-
-    if (convertedLocationArr[0].Places[0] === undefined) {
-        setNotification("Your <u>from location</u> doesn't exists");
-
-        return;
-    }
-
-    if (convertedLocationArr[1].Places[0] === undefined) {
-        setNotification("Your <u>to location</u> doesn't exists");
-
-        return;
-    }
 
     // Set the result to new variable
     const inputPlaceIDs = setInputPlaceID(convertedLocationArr);
@@ -146,3 +131,5 @@ function setInputPlaceID(convertedLocationArr) {
 
     return [fromInputPlaceID, toInputPlaceID];
 }
+
+module.exports = { convertLocations };

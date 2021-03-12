@@ -1,6 +1,4 @@
-import { formatDate } from "../utils/format.js";
-
-export { renderCheckoutPage };
+const { formatDate } = require("../utils/format");
 
 /**
  * Renders the content of the checkout page/route
@@ -41,3 +39,5 @@ function checkoutBtnEventListener() {
         alert("You reached the end of the application 🥳");
     });
 }
+
+module.exports = { renderCheckoutPage };

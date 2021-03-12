@@ -1,10 +1,4 @@
-import { capitalizeFirstLetter } from "./format.js";
-
-export {
-    clearPrevSearch,
-    addSearchToLocalStorage,
-    addAirportCodesToLocalStorage,
-};
+const { capitalizeFirstLetter } = require("./format");
 
 /**
  * Clears local storage values of last search
@@ -66,3 +60,9 @@ function addAirportCodesToLocalStorage(fromInputPlaceID, toInputPlaceID) {
     localStorage.setItem("fromAirportCode", fromAirportCode);
     localStorage.setItem("toAirportCode", toAirportCode);
 }
+
+module.exports = {
+    clearPrevSearch,
+    addSearchToLocalStorage,
+    addAirportCodesToLocalStorage,
+};

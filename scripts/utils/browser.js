@@ -1,7 +1,7 @@
 /**
  * Checks which browser the user is in
  */
-export function whichBrowser() {
+function whichBrowser() {
     const ua = navigator.userAgent.toLowerCase();
 
     if (ua.includes("chrome")) {
@@ -24,3 +24,5 @@ export function whichBrowser() {
         return "safari";
     }
 }
+
+module.exports = { whichBrowser };

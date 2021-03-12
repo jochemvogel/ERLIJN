@@ -1,6 +1,4 @@
-import { formatDate } from "../utils/format.js";
-
-export { setDetailButtonListener };
+const { formatDate } = require("../utils/format.js");
 
 /**
  * Set a event listener to the detail button
@@ -81,3 +79,5 @@ function renderDetailsModal(carrier, price, direct) {
         detailsModal.classList.add("hidden");
     });
 }
+
+module.exports = { setDetailButtonListener };
