@@ -1,4 +1,3 @@
-const { API_URL } = require("../constants/api");
 const { setDetailButtonListener } = require("./details");
 const { getResults } = require("../utils/fetch");
 
@@ -94,7 +93,7 @@ function setQuotesUrl(fromLocationCode, toLocationCode, departureDate) {
     const locale = "nl-NL";
 
     // Browse quotes
-    return `${API_URL}/browsequotes/v1.0/${country}/${currency}/${locale}/${fromLocationCode}/${toLocationCode}/${departureDate}`;
+    return `${process.env.API_URL}/browsequotes/v1.0/${country}/${currency}/${locale}/${fromLocationCode}/${toLocationCode}/${departureDate}`;
 }
 
 module.exports = { getQuotesData, setQuotesUrl };

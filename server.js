@@ -1,7 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const port = 3001;
+const PORT = process.env.PORT || 3000;
 
 const middlewares = [bodyParser.urlencoded({ extended: true })];
 
@@ -38,4 +39,4 @@ app.get("*", (req, res) => {
     res.render("404");
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}`));
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}`));

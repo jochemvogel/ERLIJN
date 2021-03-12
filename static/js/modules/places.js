@@ -1,5 +1,4 @@
 const { getQuotesData, setQuotesUrl } = require("./quotes");
-const { API_URL } = require("../constants/api");
 const { addAirportCodesToLocalStorage } = require("../utils/localStorage");
 const { getResults } = require("../utils/fetch");
 
@@ -69,7 +68,7 @@ function setConvertUrl(input) {
     const currency = "EUR";
     const locale = "nl-NL";
 
-    return `${API_URL}/autosuggest/v1.0/${country}/${currency}/${locale}/?query=${input}`;
+    return `${process.env.API_URL}/autosuggest/v1.0/${country}/${currency}/${locale}/?query=${input}`;
 }
 
 /**

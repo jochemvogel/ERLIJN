@@ -1,10 +1,8 @@
-const { API_KEY, API_HOST } = require("../constants/api");
-
 const headers = {
     method: "GET",
     headers: {
-        "x-rapidapi-key": API_KEY,
-        "x-rapidapi-host": API_HOST,
+        "x-rapidapi-key": process.env.API_KEY,
+        "x-rapidapi-host": process.env.API_HOST,
     },
 };
 
