@@ -1,8 +1,4 @@
 const { convertLocations } = require("./places");
-const {
-    addSearchToLocalStorage,
-    clearPrevSearch,
-} = require("../utils/localStorage");
 
 const { whichBrowser } = require("../utils/browser");
 
@@ -10,12 +6,7 @@ const { whichBrowser } = require("../utils/browser");
  * Sets the event listener on the Search Button
  */
 function initSearch(fromInputValue, toInputValue, dateInputValue) {
-    clearPrevSearch();
-    addSearchToLocalStorage(fromInputValue, toInputValue, dateInputValue);
-
-    hideOrDisplayDateLabel();
-
-    e.stopImmediatePropagation();
+    // hideOrDisplayDateLabel();
 
     convertLocations(fromInputValue, toInputValue, dateInputValue);
 }

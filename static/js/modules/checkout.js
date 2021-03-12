@@ -1,5 +1,7 @@
 const { formatDate } = require("../utils/format");
 
+/* NOT WORKING YET */
+
 /**
  * Renders the content of the checkout page/route
  */

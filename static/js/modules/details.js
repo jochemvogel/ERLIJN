@@ -1,5 +1,7 @@
 const { formatDate } = require("../utils/format.js");
 
+/* NOT WORKING YET */
+
 /**
  * Set a event listener to the detail button
  * Needs to happen after data is fetched (& the card is created)

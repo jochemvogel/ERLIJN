@@ -1,12 +1,13 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 const middlewares = [bodyParser.urlencoded({ extended: true })];
 
-const { init } = require("./static/js/app");
+const { convertLocations } = require("./static/js/modules/places");
 
 app.use(middlewares);
 app.use(express.static("static"));
@@ -18,17 +19,38 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
-app.post("/", (req, res) => {
-    res.render("home");
+app.post("/", async (req, res) => {
     const fromInputValue = req.body.from;
     const toInputValue = req.body.to;
     const dateInputValue = req.body.date;
 
-    console.log(
-        `From ${fromInputValue} to ${toInputValue} on ${dateInputValue}`
+    // res.setHeader("Set-Cookie", [
+    //     `fromInput=${fromInputValue}`,
+    //     `toInput=${toInputValue}`,
+    //     `dateInput=${dateInputValue}`,
+    // ]);
+
+    // const cookiesArr = req.get("Cookie").split(";");
+    // const fromInput = cookiesArr[0].split("=")[1];
+    // const toInput = cookiesArr[1].split("=")[1];
+    // const dateInput = cookiesArr[2].split("=")[1];
+
+    // console.log(
+    //     `From ${fromInputValue} to ${toInputValue} on ${dateInputValue}`
+    // );
+
+    const result = await convertLocations(
+        fromInputValue,
+        toInputValue,
+        dateInputValue
     );
 
-    init(fromInputValue, toInputValue, dateInputValue);
+    res.render("home", {
+        quotes: result.Quotes,
+        carriers: result.Carriers,
+        places: result.Places,
+        currencies: result.Currencies,
+    });
 });
 
 app.get("/checkout", (req, res) => {

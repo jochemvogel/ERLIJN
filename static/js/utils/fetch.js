@@ -1,3 +1,5 @@
+const fetch = require("node-fetch");
+
 const headers = {
     method: "GET",
     headers: {
@@ -24,4 +26,4 @@ async function getResults(url) {
         });
 }
 
-module.export = { getResults };
+module.exports = { getResults };

@@ -49,6 +49,18 @@
     <!-- Card container -->
     <div class="card-container"></div>
 
+    <% if (carriers) { %>
+        <h2><%= carriers[0].Name %></h2>
+    <% } %>
+
+    <% if (places) { %>
+        <h2><%= places[0].Name %></h2>
+    <% } %>
+
+    <% for(var i = 0; i < quotes.length; i++) { %>
+        <li><%= quotes[i].MinPrice %></li>
+    <% } %>
+
     <!-- Details modal -->
     <div class="card-modal details-modal hidden" aria-hidden="true" hidden>
         <div class="card-modal__content">

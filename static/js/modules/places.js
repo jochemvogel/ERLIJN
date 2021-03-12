@@ -1,5 +1,5 @@
 const { getQuotesData, setQuotesUrl } = require("./quotes");
-const { addAirportCodesToLocalStorage } = require("../utils/localStorage");
+// const { addAirportCodesToLocalStorage } = require("../utils/localStorage");
 const { getResults } = require("../utils/fetch");
 
 /**
@@ -25,16 +25,16 @@ async function convertLocations(fromInput, toInput, dateInput) {
     const fromInputPlaceID = inputPlaceIDs[0];
     const toInputPlaceID = inputPlaceIDs[1];
 
-    addAirportCodesToLocalStorage(fromInputPlaceID, toInputPlaceID);
-
     // Call the endpoint with the converted places to show the quotes
     const quoteUrl = setQuotesUrl(fromInputPlaceID, toInputPlaceID, dateInput);
 
     // Get the data with the converted values
-    getQuotesData(quoteUrl);
+    const result = await getQuotesData(quoteUrl);
 
-    // Empty the array
+    // Empty the (temporary) array
     locationArr = [];
+
+    return result;
 }
 
 /**
