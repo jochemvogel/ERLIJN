@@ -1,13 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const port = 3000;
+const port = 3001;
 
 const middlewares = [bodyParser.urlencoded({ extended: true })];
 
-// const { convertLocations } = require("./static/js/modules/places");
-
-const { init } = require("./scripts/app");
+const { init } = require("./static/js/app");
 
 app.use(middlewares);
 app.use(express.static("static"));
