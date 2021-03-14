@@ -1,96 +1,101 @@
 <%- include('partials/head') %>
 <section>
-    <div class="search-container">
-        <form method="post" action="/">
-            <div>
-                <input
-                    data-form-from
-                    type="text"
-                    required
-                    aria-label="Departure location"
-                    name="from"
-                />
-                <label>From</label>
-            </div>
+	<div class="search-container">
+		<form method="post" action="/">
+			<div>
+				<input
+					data-form-from
+					type="text"
+					required
+					aria-label="Departure location"
+					name="from"
+				/>
+				<label>From</label>
+			</div>
 
-            <div>
-                <input
-                    data-form-to
-                    type="text"
-                    required
-                    aria-label="Destination"
-                    name="to"
-                />
-                <label>To</label>
-            </div>
+			<div>
+				<input
+					data-form-to
+					type="text"
+					required
+					aria-label="Destination"
+					name="to"
+				/>
+				<label>To</label>
+			</div>
 
-            <div>
-                <input
-                    data-form-date
-                    type="date"
-                    required
-                    aria-label="Departure date"
-                    name="date"
-                />
-                <!-- <label id="dateLabel">Date (yyyy-mm-dd)</label> For other browsers (then Chrome) -->
-            </div>
+			<div>
+				<input
+					data-form-date
+					type="date"
+					required
+					aria-label="Departure date"
+					name="date"
+				/>
+				<!-- <label id="dateLabel">Date (yyyy-mm-dd)</label> For other browsers (then Chrome) -->
+			</div>
 
-            <button id="search-btn" class="btn search-btn" type="submit">
-                Search
-            </button>
-        </form>
+			<button id="search-btn" class="btn search-btn" type="submit">
+				Search
+			</button>
+		</form>
 
-        <!-- Notification
+		<!-- Notification
         <div class="error-notification hidden" aria-hidden="true" hidden>
             <p data-error-notification></p>
         </div> -->
+	</div>
+
+    <% if (result.quotes !== undefined) { %>
+	<!-- Card container -->
+	<div class="card-container">
+
+        <% for(var i = 0; i < result.quotes.length; i++) { %>
+	    <div class="card">
+            <h2 class="card__carrier"> <%= result.carriers[i].Name %></h2>
+            <p class="card__min-price">€<%= result.quotes[i].MinPrice %></p>
+            <p class="card__direct"><%= result.quotes[i].Direct %></p>
+            <button class="details-btn btn">Details</button>
+        </div>
+	    <% } %>
+
     </div>
-
-    <!-- Card container -->
-    <div class="card-container"></div>
-
-    <% if (carriers) { %>
-    <h2><%= carriers[0].Name %></h2>
-    <% } %> <% if (places) { %>
-    <h2><%= places[0].Name %></h2>
-    <% } %> <% for(var i = 0; i < quotes.length; i++) { %>
-    <li><%= quotes[i].MinPrice %></li>
     <% } %>
 
-    <!-- Details modal -->
-    <div class="card-modal details-modal hidden" aria-hidden="true" hidden>
-        <div class="card-modal__content">
-            <button data-modal-close class="card-modal__close">×</button>
-            <h2 data-modal-airports></h2>
-            <h3 data-modal-price class="card-modal__modal-price"></h3>
-            <p>
-                Airline:
-                <span data-modal-airline></span>
-            </p>
-            <p>
-                Direct flight:
-                <span data-modal-direct></span>
-            </p>
-            <hr />
-            <p>
-                From:
-                <span data-modal-from></span>
-            </p>
-            <p>
-                To:
-                <span data-modal-to></span>
-            </p>
-            <p>
-                Departure Date:
-                <span data-modal-date></span>
-            </p>
-            <img
-                src="/"
-                alt="Random image of destination from unsplash (not working)"
-            />
-            <button data-modal-btn class="btn">Book</button>
-        </div>
-    </div>
+	<!-- Details modal -->
+	<div class="card-modal details-modal hidden" aria-hidden="true" hidden>
+		<div class="card-modal__content">
+			<button data-modal-close class="card-modal__close">×</button>
+			<h2 data-modal-airports></h2>
+			<h3 data-modal-price class="card-modal__modal-price"></h3>
+			<p>
+				Airline:
+				<span data-modal-airline></span>
+			</p>
+			<p>
+				Direct flight:
+				<span data-modal-direct></span>
+			</p>
+			<hr />
+			<p>
+				From:
+				<span data-modal-from></span>
+			</p>
+			<p>
+				To:
+				<span data-modal-to></span>
+			</p>
+			<p>
+				Departure Date:
+				<span data-modal-date></span>
+			</p>
+			<img
+				src="/"
+				alt="Random image of destination from unsplash (not working)"
+			/>
+			<button data-modal-btn class="btn">Book</button>
+		</div>
+	</div>
 </section>
 
 <%- include('partials/footer') %>

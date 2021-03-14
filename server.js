@@ -18,10 +18,7 @@ app.set("views", "views");
 
 app.get("/", (req, res) => {
     res.render("home", {
-        quotes: "",
-        carriers: "",
-        places: "",
-        currencies: "",
+        result: ""
     });
 });
 
@@ -41,10 +38,6 @@ app.post("/", async (req, res) => {
     // const toInput = cookiesArr[1].split("=")[1];
     // const dateInput = cookiesArr[2].split("=")[1];
 
-    // console.log(
-    //     `From ${fromInputValue} to ${toInputValue} on ${dateInputValue}`
-    // );
-
     const result = await convertLocations(
         fromInputValue,
         toInputValue,
@@ -52,10 +45,7 @@ app.post("/", async (req, res) => {
     );
 
     res.render("home", {
-        quotes: result.Quotes,
-        carriers: result.Carriers,
-        places: result.Places,
-        currencies: result.Currencies,
+        result
     });
 });
 
