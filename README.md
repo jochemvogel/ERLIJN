@@ -1,6 +1,6 @@
 # Progressive Web Apps @cmda-minor-web · 20-21
 
-**[Live link](https://erlijn.jchm.dev/)**
+**[Live link](https://pacific-plateau-21284.herokuapp.com/)**
 
 ERLIJN is a search engine for (cheap) flights where you can search and book flights.
 

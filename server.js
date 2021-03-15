@@ -54,8 +54,6 @@ app.post("/", async (req, res) => {
         dateInputValue
     );
 
-    console.log('heyy')
-
     res.render("home", {
         result
     });
