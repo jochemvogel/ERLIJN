@@ -58,15 +58,15 @@
             <h2 class="card__carrier"> <%= result.Carriers[i].Name %></h2>
             <p class="card__min-price">€<%= result.Quotes[i].MinPrice %>,00</p>
             <p class="card__direct">Direct: <%= result.Quotes[i].Direct %></p>
-            <button class="details-btn btn">Details</button>
+            <button class="details-btn btn">Checkout</button>
         </div>
 	    <% } %>
 
     </div>
     <% } %>
 
-	<!-- Details modal -->
-	<div class="card-modal details-modal hidden" aria-hidden="true" hidden>
+	<!-- Details modal (SKIP THIS PART (FOR NOW)) -->
+	<!-- <div class="card-modal details-modal hidden" aria-hidden="true" hidden>
 		<div class="card-modal__content">
 			<button data-modal-close class="card-modal__close">×</button>
 			<h2 data-modal-airports></h2>
@@ -98,7 +98,7 @@
 			/>
 			<button data-modal-btn class="btn">Book</button>
 		</div>
-	</div>
+	</div> -->
 </section>
 
 <%- include('partials/footer') %>
