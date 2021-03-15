@@ -1,4 +1,4 @@
-<%- include('partials/head') %>
+<%- include('../partials/head') %>
 
 <section>
     <div class="checkout__content">
@@ -23,14 +23,22 @@
             </span>
         </p>
         <p>
-            Leaving:
+            Departure Date:
             <span>
                 <%= date %>
             </span>
         </p>
         <p>
+            Departure Time:
+            <span></span>
+        </p>
+        <p>
+            Airline:
+            <span></span>
+        </p>
+        <p>
             Price:
-            <span data-checkout-price></span>
+            <span></span>
         </p>
 
         <% } %>
@@ -60,4 +68,4 @@
     </div>
 </section>
 
-<%- include('partials/footer') %>
+<%- include('../partials/footer') %>

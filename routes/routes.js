@@ -1,22 +1,10 @@
-require("dotenv").config();
-const express = require("express");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+const express = require('express');
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const { convertLocations } = require("../public/js/modules/places");
 
-const middlewares = [bodyParser.urlencoded({ extended: true }), cookieParser()];
+const router = express.Router();
 
-const { convertLocations } = require("./static/js/modules/places");
-
-app.use(middlewares);
-app.use(express.static("static"));
-
-app.set("view engine", "ejs");
-app.set("views", "views");
-
-app.get("/", async (req, res) => {
+router.get("/", async (req, res) => {
     let result = ""
 
     const fromInput = req.cookies.fromInput;
@@ -32,12 +20,12 @@ app.get("/", async (req, res) => {
         );
     }
 
-    res.render("home", {
+    res.render("pages/home", {
         result
     });
 });
 
-app.post("/", async (req, res) => {
+router.post("/", async (req, res) => {
     const fromInputValue = req.body.from;
     const toInputValue = req.body.to;
     const dateInputValue = req.body.date;
@@ -54,25 +42,37 @@ app.post("/", async (req, res) => {
         dateInputValue
     );
 
-    res.render("home", {
+    res.render("pages/home", {
         result
     });
 });
 
-app.get("/checkout", (req, res) => {
+router.get("/checkout", (req, res) => {
     const fromInput = req.cookies.fromInput;
     const toInput = req.cookies.toInput;
     const dateInput = req.cookies.dateInput;
 
-    res.render("checkout", {
+    res.render("pages/checkout", {
         fromLocation: fromInput,
         toLocation: toInput,
         date: dateInput
     });
 });
 
-app.get("*", (req, res) => {
-    res.render("404");
+router.post("/checkout", (req, res) => {
+    const fromInput = req.cookies.fromInput;
+    const toInput = req.cookies.toInput;
+    const dateInput = req.cookies.dateInput;
+
+    res.render("pages/checkout", {
+        fromLocation: fromInput,
+        toLocation: toInput,
+        date: dateInput
+    });
 });
 
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}`));
+router.get("*", (req, res) => {
+    res.render("pages/404");
+});
+
+module.exports = router;
