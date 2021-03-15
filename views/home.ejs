@@ -48,13 +48,16 @@
 
     <% if (result.Quotes !== undefined) { %>
 	<!-- Card container -->
+    <p class="flight-data__places"><%= result.Places[0].Name %> - <%= result.Places[1].Name %></p>
+    <p class="flight-data__date">(On: <%= result.Quotes[0].QuoteDateTime.substr(0, 10) %>)</p>
+
 	<div class="card-container">
 
         <% for(var i = 0; i < result.Quotes.length; i++) { %>
 	    <div class="card">
             <h2 class="card__carrier"> <%= result.Carriers[i].Name %></h2>
             <p class="card__min-price">€<%= result.Quotes[i].MinPrice %>,00</p>
-            <p class="card__direct"><%= result.Quotes[i].Direct %></p>
+            <p class="card__direct">Direct: <%= result.Quotes[i].Direct %></p>
             <button class="details-btn btn">Details</button>
         </div>
 	    <% } %>
