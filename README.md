@@ -1,6 +1,6 @@
 # Progressive Web Apps @cmda-minor-web · 20-21
 
-**[Live link](https://pacific-plateau-21284.herokuapp.com/)**
+**[Live link](https://erlijn.herokuapp.com//)**
 
 ERLIJN is a search engine for (cheap) flights where you can search and book flights.
 
@@ -32,17 +32,25 @@ _Future: a **book** button on the details modal that will bring you to a checkou
 
 ### Get it local
 
-This app is made with Vanilla JS and has no package, yet. Just clone the repository and you're good to go. I advise you to use a webserver. There are two options:
+This app is made with vanilla JS (frontend) and NodeJS (backend).
+#### 1). Clone the repository
+`git clone https://github.com/jochemvogel/progressive-web-apps-2021.git `
 
-1. Just install a live server plugin for you IDE and run it ([extension VSCode](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)).
-2. Run `python -m SimpleHTTPServer 8000` in your terminal.
-3. _Will be updated when the whole NPM scripts is done_
+#### 2). Install dependencies & make the server run (nodemon)
+`npm install && npm run start`
 
-### Skyscanner API
+#### 3). Get an API key
 
 Go to [RapidApi.com](https://rapidapi.com/skyscanner/api/skyscanner-flight-search) and click on **Sign Up** in the top right corner. When you've done this, return back to the previous URL and you can use the API. The API has no rate limit.
 
-Create a `.env.local` file and copy the `API_KEY=` from the `.env` file. Then copy the API key you got from RapidApi.
+Copy the `.env.example` file and update the value of the `API_KEY=` to the API key you got from RapidApi.
+
+#### 4). Watch files
+// CSS watcher
+
+#### 5). Other  build scripts
+
+_Will be updated when the whole NPM scripts is done_
 
 ## :open_file_folder: Folder Structure
 
