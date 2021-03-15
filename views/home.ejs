@@ -46,15 +46,15 @@
         </div> -->
 	</div>
 
-    <% if (result.quotes !== undefined) { %>
+    <% if (result.Quotes !== undefined) { %>
 	<!-- Card container -->
 	<div class="card-container">
 
-        <% for(var i = 0; i < result.quotes.length; i++) { %>
+        <% for(var i = 0; i < result.Quotes.length; i++) { %>
 	    <div class="card">
-            <h2 class="card__carrier"> <%= result.carriers[i].Name %></h2>
-            <p class="card__min-price">€<%= result.quotes[i].MinPrice %></p>
-            <p class="card__direct"><%= result.quotes[i].Direct %></p>
+            <h2 class="card__carrier"> <%= result.Carriers[i].Name %></h2>
+            <p class="card__min-price">€<%= result.Quotes[i].MinPrice %>,00</p>
+            <p class="card__direct"><%= result.Quotes[i].Direct %></p>
             <button class="details-btn btn">Details</button>
         </div>
 	    <% } %>
