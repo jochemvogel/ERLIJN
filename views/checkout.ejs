@@ -7,23 +7,33 @@
 
         <hr />
 
+        <% if (fromLocation !== undefined) { %>
+
         <h3>Summary</h3>
         <p>
             From:
-            <span data-checkout-from></span>
+            <span>
+                <%= fromLocation %>
+            </span>
         </p>
         <p>
             To:
-            <span data-checkout-to></span>
+            <span>
+                <%= toLocation %>
+            </span>
         </p>
         <p>
             Leaving:
-            <span data-checkout-date></span>
+            <span>
+                <%= date %>
+            </span>
         </p>
         <p>
             Price:
             <span data-checkout-price></span>
         </p>
+
+        <% } %>
 
         <hr />
 

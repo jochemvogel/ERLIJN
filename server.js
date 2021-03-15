@@ -1,12 +1,12 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-let ejs = require("ejs");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const middlewares = [bodyParser.urlencoded({ extended: true })];
+const middlewares = [bodyParser.urlencoded({ extended: true }), cookieParser()];
 
 const { convertLocations } = require("./static/js/modules/places");
 
@@ -16,9 +16,24 @@ app.use(express.static("static"));
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+    let result = ""
+
+    const fromInput = req.cookies.fromInput;
+    const toInput = req.cookies.toInput;
+    const dateInput = req.cookies.dateInput;
+
+    /* Render cards of previous search */
+    if (fromInput !== undefined) {
+        result = await convertLocations(
+            fromInput,
+            toInput,
+            dateInput
+        );
+    }
+
     res.render("home", {
-        result: ""
+        result
     });
 });
 
@@ -27,16 +42,11 @@ app.post("/", async (req, res) => {
     const toInputValue = req.body.to;
     const dateInputValue = req.body.date;
 
-    // res.setHeader("Set-Cookie", [
-    //     `fromInput=${fromInputValue}`,
-    //     `toInput=${toInputValue}`,
-    //     `dateInput=${dateInputValue}`,
-    // ]);
-
-    // const cookiesArr = req.get("Cookie").split(";");
-    // const fromInput = cookiesArr[0].split("=")[1];
-    // const toInput = cookiesArr[1].split("=")[1];
-    // const dateInput = cookiesArr[2].split("=")[1];
+    res.setHeader("Set-Cookie", [
+        `fromInput=${fromInputValue}`,
+        `toInput=${toInputValue}`,
+        `dateInput=${dateInputValue}`,
+    ]);
 
     const result = await convertLocations(
         fromInputValue,
@@ -44,13 +54,23 @@ app.post("/", async (req, res) => {
         dateInputValue
     );
 
+    console.log('heyy')
+
     res.render("home", {
         result
     });
 });
 
 app.get("/checkout", (req, res) => {
-    res.render("checkout");
+    const fromInput = req.cookies.fromInput;
+    const toInput = req.cookies.toInput;
+    const dateInput = req.cookies.dateInput;
+
+    res.render("checkout", {
+        fromLocation: fromInput,
+        toLocation: toInput,
+        date: dateInput
+    });
 });
 
 app.get("*", (req, res) => {
