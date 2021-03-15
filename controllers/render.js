@@ -52,16 +52,14 @@ function getCheckout(req, res) {
 }
 
 function postCheckout(req, res) {
-    router.post("/checkout", (req, res) => {
-        const fromInput = req.cookies.fromInput;
-        const toInput = req.cookies.toInput;
-        const dateInput = req.cookies.dateInput;
+    const fromInput = req.cookies.fromInput;
+    const toInput = req.cookies.toInput;
+    const dateInput = req.cookies.dateInput;
 
-        res.render("pages/checkout", {
-            fromLocation: fromInput,
-            toLocation: toInput,
-            date: dateInput,
-        });
+    res.render("pages/checkout", {
+        fromLocation: fromInput,
+        toLocation: toInput,
+        date: dateInput,
     });
 }
 

@@ -342,7 +342,7 @@ section {
     animation: errorShuffle 0.35s forwards;
 }
 
-.search-btn {
+#search-btn {
     margin-top: 1em;
     height: 50px;
     width: 100%;
