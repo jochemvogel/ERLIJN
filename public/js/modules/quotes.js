@@ -1,4 +1,3 @@
-const { setDetailButtonListener } = require("./details");
 const { getResults } = require("../utils/fetch");
 
 /**
@@ -19,14 +18,7 @@ async function getQuotesData(url) {
         return;
     }
 
-    // console.log(result);
-
     return result;
-
-    // setCarrierData(result);
-    // setPriceData(result);
-
-    // setDetailButtonListener();
 }
 
 /**

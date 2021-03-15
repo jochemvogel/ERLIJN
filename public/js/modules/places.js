@@ -1,5 +1,4 @@
 const { getQuotesData, setQuotesUrl } = require("./quotes");
-// const { addAirportCodesToLocalStorage } = require("../utils/localStorage");
 const { getResults } = require("../utils/fetch");
 
 /**
