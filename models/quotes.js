@@ -1,4 +1,4 @@
-const { getResults } = require("../utils/fetch");
+const { getResults } = require("./fetch");
 
 /**
  * Get all the data that the user needs

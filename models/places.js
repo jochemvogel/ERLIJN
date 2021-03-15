@@ -1,5 +1,5 @@
 const { getQuotesData, setQuotesUrl } = require("./quotes");
-const { getResults } = require("../utils/fetch");
+const { getResults } = require("./fetch");
 
 /**
  * The quotes endpoint only accepts specific airport codes like AMS-sky and JFK-sky
