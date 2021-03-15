@@ -43,7 +43,7 @@ This app is made with vanilla JS (frontend) and NodeJS (backend).
 
 Go to [RapidApi.com](https://rapidapi.com/skyscanner/api/skyscanner-flight-search) and click on **Sign Up** in the top right corner. When you've done this, return back to the previous URL and you can use the API. The API has no rate limit.
 
-Copy the `.env.example` file and update the value of the `API_KEY=` to the API key you got from RapidApi.
+Copy the `.env.example` file, change the name to `.env` and update the value of the `API_KEY=` to the API key you got from RapidApi.
 
 #### 4). Watch files
 // CSS watcher
