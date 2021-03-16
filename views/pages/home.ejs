@@ -60,7 +60,7 @@
             <form action="/checkout" method="POST">
                 <input class="invisible-input" type="text" value="<%= result.Quotes[i].MinPrice %>" name="price">
                 <input class="invisible-input" type="text" value="<%= result.Carriers[i].Name %>" name="airline">
-                <input class="invisible-input" type="text" value="<%= result.Quotes[0].QuoteDateTime.substr(11, 15) %>" name="time">
+                <input class="invisible-input" type="text" value="<%= result.Quotes[i].QuoteDateTime.substr(11, 15) %>" name="time">
                 <button class="details-btn btn">Checkout</button>
             </form>
         </div>
@@ -71,3 +71,6 @@
 </section>
 
 <%- include('../partials/footer') %>
+
+
+<!-- sessies ipv cookies -->

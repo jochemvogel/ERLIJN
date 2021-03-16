@@ -3,14 +3,14 @@ const { convertLocations } = require("../models/places");
 async function getHome(req, res) {
     let result = "";
 
-    const fromInput = req.cookies.fromInput;
-    const toInput = req.cookies.toInput;
-    const dateInput = req.cookies.dateInput;
+    // const fromInput = req.cookies.fromInput;
+    // const toInput = req.cookies.toInput;
+    // const dateInput = req.cookies.dateInput;
 
-    /* Render cards of previous search */
-    if (fromInput !== undefined) {
-        result = await convertLocations(fromInput, toInput, dateInput);
-    }
+    // /* Render cards of previous search */
+    // if (fromInput !== undefined) {
+    //     result = await convertLocations(fromInput, toInput, dateInput);
+    // }
 
     res.render("pages/home", {
         result,
@@ -74,8 +74,19 @@ function getOffline(req, res) {
     res.render("pages/offline");
 }
 
+function getConfirmation(req, res) {
+    res.render("pages/confirmation");
+}
+
+function postConfirmation(req, res) {
+    const name = req.body.name;
+    res.render("pages/confirmation", {
+        name
+    });
+}
+
 function get404(req, res) {
     res.render("pages/404");
 }
 
-module.exports = { getHome, postHome, getCheckout, postCheckout, getOffline, get404 };
+module.exports = { getHome, postHome, getCheckout, postCheckout, getOffline, getConfirmation, postConfirmation, get404 };

@@ -2,35 +2,46 @@ const CORE_CACHE = 1
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`
 const CORE_ASSETS = ["manifest.json","icons", "css/style.css", "/offline"]
 
-self.addEventListener('install', (event) => {
-    event.waitUntil(
+self.addEventListener('install', (e) => {
+    e.waitUntil(
         caches.open(CORE_CACHE_NAME)
         .then(cache => cache.addAll(CORE_ASSETS))
         .then(() => self.skipWaiting())
     )
 })
 
-self.addEventListener("activate", (event) => {
-    event.waitUntil(clients.claim())
+self.addEventListener("activate", (e) => {
+    // Clear old caches
+    e.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.map(cache => {
+                    if (cache !== CORE_CACHE_NAME) {
+                        return caches.delete(cache);
+                    }
+                })
+            )
+        })
+    )
 })
 
-self.addEventListener("fetch", (event) => {
+self.addEventListener("fetch", (e) => {
     // Prevent a bug with some chrome extensions
-    if(!(event.request.url.indexOf('http') === 0)){
+    if(!(e.request.url.indexOf('http') === 0)){
        return;
     }
 
-    event.respondWith(
+    e.respondWith(
         caches.open(CORE_CACHE_NAME).then(cache => {
-            return cache.match(event.request)
-                .then(response => {
-                    if(response) {
-                        return response
+            return cache.match(e.request)
+                .then(res => {
+                    if(res) {
+                        return res;
                     }
-                    return fetch(event.request)
-                    .then(response => {
-                        cache.put(event.request, response.clone())
-                        return response
+                    return fetch(e.request)
+                    .then(res => {
+                        cache.put(e.request, res.clone())
+                        return res
                     })
                 }).catch((err) => {
                     return caches.open(CORE_CACHE_NAME).then(cache => cache.match('/offline'))
