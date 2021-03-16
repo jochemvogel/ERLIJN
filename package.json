@@ -5,13 +5,18 @@
     "main": "app.js",
     "scripts": {
         "start": "node",
-        "dev": "nodemon & npm run watch",
+        "dev": "nodemon & npm run build & npm run watch",
+        "pre-build": "npm-run-all pre-build:*",
         "build": "npm-run-all build:*",
         "watch": "npm-run-all watch:*",
         "prebuild:css": "rimraf \"public/css\"",
         "build:css": "node scripts/build-css.js",
         "watch:css": "chokidar \"src/css/*.css\" --c \"npm run build:css\"",
-        "build:assets": "node scripts/build-assets.js"
+        "prebuild:js": "rimraf \"public/js\"",
+        "build:js": "node scripts/build-js.js",
+        "watch:js": "chokidar \"src/js/*.js\" --c \"npm run build:js\"",
+        "build:assets": "node scripts/build-assets.js",
+        "build:img": "node scripts/build-img.js"
     },
     "repository": {
         "type": "git",
@@ -30,8 +35,7 @@
         "dotenv": "^8.2.0",
         "ejs": "^3.1.6",
         "express": "^4.17.1",
-        "node-fetch": "^2.6.1",
-        "rimraf": "^3.0.2"
+        "node-fetch": "^2.6.1"
     },
     "devDependencies": {
         "chokidar-cli": "^2.1.0",
@@ -39,7 +43,9 @@
         "gulp-autoprefixer": "^7.0.1",
         "gulp-clean-css": "^4.3.0",
         "gulp-concat": "^2.6.1",
+        "gulp-uglify-es": "^2.0.0",
         "nodemon": "^2.0.7",
-        "npm-run-all": "^4.1.5"
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^3.0.2"
     }
 }

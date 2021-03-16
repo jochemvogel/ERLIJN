@@ -1,9 +1,8 @@
 const CORE_CACHE = 1
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`
-const CORE_ASSETS = ["manifest.json","/icons", "css/style.css", "/offline"]
+const CORE_ASSETS = ["manifest.json","icons", "css/style.css", "/offline"]
 
 self.addEventListener('install', (event) => {
-    console.log("Installed")
     event.waitUntil(
         caches.open(CORE_CACHE_NAME)
         .then(cache => cache.addAll(CORE_ASSETS))
@@ -12,11 +11,15 @@ self.addEventListener('install', (event) => {
 })
 
 self.addEventListener("activate", (event) => {
-    console.log("Activated")
     event.waitUntil(clients.claim())
 })
 
 self.addEventListener("fetch", (event) => {
+    // Prevent a bug with some chrome extensions
+    if(!(event.request.url.indexOf('http') === 0)){
+       return;
+    }
+
     event.respondWith(
         caches.open(CORE_CACHE_NAME).then(cache => {
             return cache.match(event.request)
