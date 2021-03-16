@@ -56,10 +56,17 @@ function postCheckout(req, res) {
     const toInput = req.cookies.toInput;
     const dateInput = req.cookies.dateInput;
 
+    const ticketPrice = req.body.price;
+    const ticketAirline = req.body.airline;
+    const ticketDepTime = req.body.time;
+
     res.render("pages/checkout", {
         fromLocation: fromInput,
         toLocation: toInput,
         date: dateInput,
+        ticketPrice,
+        ticketAirline,
+        ticketDepTime
     });
 }
 

@@ -191,6 +191,10 @@ section {
     margin-top: 0.5em;
 }
 
+.invisible-input {
+    display: none;
+}
+
 .card {
     display: flex;
     flex-direction: column;
