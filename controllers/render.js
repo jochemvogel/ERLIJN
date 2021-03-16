@@ -70,8 +70,12 @@ function postCheckout(req, res) {
     });
 }
 
+function getOffline(req, res) {
+    res.render("pages/offline");
+}
+
 function get404(req, res) {
     res.render("pages/404");
 }
 
-module.exports = { getHome, postHome, getCheckout, postCheckout, get404 };
+module.exports = { getHome, postHome, getCheckout, postCheckout, getOffline, get404 };

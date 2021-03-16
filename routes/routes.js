@@ -8,6 +8,7 @@ router
     .post("/", render.postHome)
     .get("/checkout", render.getCheckout)
     .post("/checkout", render.postCheckout)
+    .get("/offline", render.getOffline)
     .get("*", render.get404);
 
 module.exports = router;
