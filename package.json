@@ -4,10 +4,13 @@
     "version": "1.0.0",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon",
+        "start": "node",
+        "dev": "nodemon & npm run watch",
         "build": "npm-run-all build:*",
+        "watch": "npm-run-all watch:*",
+        "prebuild:css": "rimraf \"public/css\"",
         "build:css": "node scripts/build-css.js",
+        "watch:css": "chokidar \"src/css/*.css\" --c \"npm run build:css\"",
         "build:assets": "node scripts/build-assets.js"
     },
     "repository": {
@@ -27,9 +30,11 @@
         "dotenv": "^8.2.0",
         "ejs": "^3.1.6",
         "express": "^4.17.1",
-        "node-fetch": "^2.6.1"
+        "node-fetch": "^2.6.1",
+        "rimraf": "^3.0.2"
     },
     "devDependencies": {
+        "chokidar-cli": "^2.1.0",
         "gulp": "^4.0.2",
         "gulp-autoprefixer": "^7.0.1",
         "gulp-clean-css": "^4.3.0",

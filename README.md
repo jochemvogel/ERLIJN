@@ -37,7 +37,7 @@ This app is made with vanilla JS (frontend) and NodeJS (backend).
 `git clone https://github.com/jochemvogel/progressive-web-apps-2021.git `
 
 #### 2). Install dependencies & make the server run (nodemon)
-`npm install && npm run start`
+`npm install & npm run dev`
 
 #### 3). Get an API key
 
