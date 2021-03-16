@@ -13,8 +13,6 @@ async function postHome(req, res) {
     const toInputValue = req.body.to;
     const dateInputValue = req.body.date;
 
-    console.log('hey');
-
     res.setHeader("Set-Cookie", [
         `fromInput=${fromInputValue}`,
         `toInput=${toInputValue}`,
