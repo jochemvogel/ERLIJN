@@ -9,22 +9,22 @@
     "description": "ERLIJN is a search engine for (cheap) flights where you can search and book flights.",
     "icons": [
         {
-            "src": "/img/icons/icon-192.png",
+            "src": "/icons/icon-192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/img/icons/icon-256.png",
+            "src": "/icons/icon-256.png",
             "type": "image/png",
             "sizes": "256x256"
         },
         {
-            "src": "/img/icons/icon-384.png",
+            "src": "/icons/icon-384.png",
             "type": "image/png",
             "sizes": "384x384"
         },
         {
-            "src": "/img/icons/icon-512.png",
+            "src": "/icons/icon-512.png",
             "type": "image/png",
             "sizes": "512x512"
         }

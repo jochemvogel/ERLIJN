@@ -7,7 +7,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "nodemon",
         "build": "npm-run-all build:*",
-        "build:css": "node scripts/build-css.js"
+        "build:css": "node scripts/build-css.js",
+        "build:assets": "node scripts/build-assets.js"
     },
     "repository": {
         "type": "git",
