@@ -18,13 +18,11 @@ ERLIJN is a search engine for (cheap) flights where you can search and book flig
 
 ## :nerd_face: Usage
 
-Search for a location and click on search. Thereafter a few cards with quotes will appear. On this cards you can find a **`Details`** button. Click on this and a modal with details about the flight/quote will appear.
-
-_Future: a **book** button on the details modal that will bring you to a checkout page/route._
+Search for a location and click on search. Thereafter a few cards with quotes will appear. On this cards you can find a **`Checkout`** button. Click on this and a checkout page with details about the flight/quote will appear.
 
 ### Screenshot
 
-![Frontend ](https://github.com/jochemvogel/web-app-from-scratch-2021/blob/master/assets/img/screenshot_app.png)
+![Frontend ](https://github.com/jochemvogel/minor-web/blob/master/wafs/assets/img/screenshot_app.png)
 
 <a href="installation"></a>
 
@@ -36,8 +34,8 @@ This app is made with vanilla JS (frontend) and NodeJS (backend).
 #### 1). Clone the repository
 `git clone https://github.com/jochemvogel/progressive-web-apps-2021.git `
 
-#### 2). Install dependencies & make the server run (nodemon)
-`npm install & npm run dev`
+#### 2). Install dependencies
+`npm install`
 
 #### 3). Get an API key
 
@@ -45,16 +43,32 @@ Go to [RapidApi.com](https://rapidapi.com/skyscanner/api/skyscanner-flight-searc
 
 Copy the `.env.example` file, change the name to `.env` and update the value of the `API_KEY=` to the API key you got from RapidApi.
 
-#### 4). Watch files
-// CSS watcher
+#### 4). Start development environment
+`npm run dev` (Will build & watch automatically)
 
-#### 5). Other  build scripts
+#### 5). Watch files (manual)
+`npm run watch`
 
-_Will be updated when the whole NPM scripts is done_
+#### 6). Build files (manual)
+`npm run build`
 
 ## :open_file_folder: Folder Structure
 
-This projects uses **modules**. Honestly I don't have to say a lot about it, so maybe in the future I'll add some more details about the usage of the project.
+*Will be updated later:*
+### models
+All the data is getting fetch (and processed) in this folder.
+### views
+All the (EJS) views can be found here. There is a `/pages` and a `/partials` folder located.
+### controllers
+The render controller is located in this folder. Controllers are the 'middleman' between the views & models and reacts to user interaction.
+### routes
+All the routes (with it's render functions) are located in `routes/routes.js`.
+### scripts
+Here are all the build scripts located.
+### src
+All the js, css and assets are located in this folder. When you build, those files will be optimized and placed in the `/public` folder.
+### public
+This folder is not visible (on default). After you build, the `/public` folder will be created.
 
 ## :package: API Endpoints Structure
 
@@ -186,23 +200,8 @@ _outboundpartialdate_: **2021-02-10**
 ```
 
 ## :memo: Todo list
-
--   [x] **Add modules**. Make it more readable.
-
--   [x] **Let users fill in the location instead of the Airport Code**. More common that you search for `Amsterdam` instead of `AMS`. Make that happen.
-
--   [x] **Make the detail modal dynamic**. It's already dynamic now, but JS is creating a modal for every card, while one modal (that updates based on the data) is enough.
-
--   [x] **Let the user fill in the country instead of city**. Netherlands instead of AMS.
-
--   [x] **Error handling for users.** Give them feedback: are there no flights? Did they miss something? Did they fill in the wrong airport. Maybe the API-key is not working correctly (anymore), and they get an 401. Besides that: JS stops running when there is an error. When that happens, the app stops working (until you reload). Not a good UX imo.
-
--   [x] **Improve the details modal**. It's boring right now. Add extra (useful) information and redesign it.
-
--   [x] **Improve the checkout route**. It's boring right now. Add extra (useful) information and redesign it.
-
--   [ ] **Add template engine**. Never done it before, but sounds cool
-
+-   [ ] **Error handling**. Worked in the WAFS version of this app, but it doesn't work here, yet.
+-   [ ] **Improve the forms**. It's not really user friendly right now. The forms are getting cleared after submission, but you don't want this. Those forms needs to be filled with previous data.
 -   [ ] **Come up with new ideas and add those in the backlog**. Ongoing 🙃
 
 ### Backlog
