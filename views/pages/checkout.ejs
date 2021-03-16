@@ -5,9 +5,15 @@
         <a href="/">&larr; Go Back</a>
         <h2>Checkout</h2>
 
-        <hr />
+        <% if ((typeof ticketDepTime == 'undefined') || (typeof fromLocation == 'undefined')) { %>
+            <p>You haven't booked, yet</p>
 
-        <% if (fromLocation !== undefined) { %>
+        <% } %>
+
+
+        <% if ((typeof ticketDepTime !== 'undefined') && (typeof fromLocation !== 'undefined')) { %>
+
+        <hr />
 
         <h3>Summary</h3>
         <p>
@@ -47,8 +53,6 @@
             </span>
         </p>
 
-        <% } %>
-
         <hr />
 
         <h3>Enter your personal data</h3>
@@ -71,6 +75,7 @@
 
             <button id="checkout-btn" class="btn">Confirm</button>
         </form>
+        <% } %>
     </div>
 </section>
 
