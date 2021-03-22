@@ -1,6 +1,6 @@
 const { convertLocations } = require("../models/places");
 
-async function getHome(req, res) {
+function getHome(req, res) {
     const result = "";
 
     res.render("pages/home", {

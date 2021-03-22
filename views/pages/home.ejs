@@ -1,79 +1,89 @@
 <%- include('../partials/head') %>
 <section>
-	<div class="search-container">
-		<form method="post" action="/">
-			<div>
-				<input
-					data-form-from
-					type="text"
-					required
-					aria-label="Departure location"
-					name="from"
-				/>
-				<label>From</label>
-			</div>
+    <div class="search-container">
+        <form method="post" action="/">
+            <div>
+                <input
+                    data-form-from
+                    type="text"
+                    required
+                    aria-label="Departure location"
+                    name="from"
+                />
+                <label>From</label>
+            </div>
 
-			<div>
-				<input
-					data-form-to
-					type="text"
-					required
-					aria-label="Destination"
-					name="to"
-				/>
-				<label>To</label>
-			</div>
+            <div>
+                <input
+                    data-form-to
+                    type="text"
+                    required
+                    aria-label="Destination"
+                    name="to"
+                />
+                <label>To</label>
+            </div>
 
-			<div>
-				<input
-					data-form-date
-					type="date"
-					required
-					aria-label="Departure date"
-					name="date"
-				/>
-			</div>
+            <div>
+                <input
+                    data-form-date
+                    type="date"
+                    required
+                    aria-label="Departure date"
+                    name="date"
+                />
+            </div>
 
-			<button id="search-btn" class="btn search-btn" type="submit">
-				Search
-			</button>
-		</form>
+            <button id="search-btn" class="btn search-btn" type="submit">
+                Search
+            </button>
+        </form>
 
-		<!-- Notification
+        <!-- Notification
         <div class="error-notification hidden" aria-hidden="true" hidden>
             <p data-error-notification></p>
         </div> -->
-	</div>
+    </div>
 
     <% if (result.Quotes !== undefined) { %>
-	<!-- Card container -->
-    <p class="flight-data__places"><%= result.Places[0].Name %> - <%= result.Places[1].Name %></p>
-    <p class="flight-data__date">(On: <%= result.Quotes[0].QuoteDateTime.substr(0, 10) %>)</p>
+    <!-- Card container -->
+    <p class="flight-data__places">
+        <%= result.Places[0].Name %> - <%= result.Places[1].Name %>
+    </p>
+    <p class="flight-data__date">
+        (On: <%= result.Quotes[0].QuoteDateTime.substr(0, 10) %>)
+    </p>
 
-	<div class="card-container">
-
+    <div class="card-container">
         <% for(var i = 0; i < result.Quotes.length; i++) { %>
-	    <div class="card">
-            <h2 class="card__carrier"> <%= result.Carriers[i].Name %></h2>
+        <article class="card">
+            <h2 class="card__carrier"><%= result.Carriers[i].Name %></h2>
             <p class="card__min-price">€<%= result.Quotes[i].MinPrice %>,00</p>
             <p class="card__direct">Direct: <%= result.Quotes[i].Direct %></p>
 
             <!-- Checkout Button (invisible input) -->
             <form action="/checkout" method="POST">
-                <input class="invisible-input" type="text" value="<%= result.Quotes[i].MinPrice %>" name="price">
-                <input class="invisible-input" type="text" value="<%= result.Carriers[i].Name %>" name="airline">
-                <input class="invisible-input" type="text" value="<%= result.Quotes[i].QuoteDateTime.substr(11, 15) %>" name="time">
+                <input
+                    type="hidden"
+                    value="<%= result.Quotes[i].MinPrice %>"
+                    name="price"
+                />
+                <input
+                    type="hidden"
+                    value="<%= result.Carriers[i].Name %>"
+                    name="airline"
+                />
+                <input
+                    type="hidden"
+                    value="<%= result.Quotes[i].QuoteDateTime.substr(11, 15) %>"
+                    name="time"
+                />
                 <button class="details-btn btn">Checkout</button>
             </form>
-
-        </div>
-	    <% } %>
-
+        </article>
+        <% } %>
     </div>
     <% } %>
 </section>
 
 <%- include('../partials/footer') %>
-
-
-<!-- sessies ipv cookies -->
