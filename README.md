@@ -7,13 +7,23 @@ ERLIJN is a search engine for (cheap) flights where you can search and book flig
 ### Table of Contents
 
 <table>
-    <tr>
-        <td align="center"><a href="#nerd_face-usage">🤓 Usage<a></td>
-        <td align="center"><a href="#gear-installation">⚙️ Installation<a></td>
-        <td align="center"><a href="#open_file_folder-folder-structure">🗂 Folder Structure<a></td>
-        <td align="center"><a href="#package-api-endpoints-structure">📦 API Structure<a></td>
-        <td align="center"><a href="#memo-todo-list">📝 Todo list<a></td>
-    </tr>
+
+<tr>
+
+<td align="center"><a href="#nerd_face-usage">🤓 Usage<a></td>
+
+<td align="center"><a href="#gear-installation">⚙️ Installation<a></td>
+
+<td align="center"><a href="#open_file_folder-folder-structure">🗂 Folder Structure<a></td>
+
+<td align="center"><a href="#package-api-endpoints-structure">📦 API Structure<a></td>
+
+<td align="center"><a href="#rocket-optimisations">🚀 Optimisations<a></td>
+
+<td align="center"><a href="#memo-todo-list">📝 Todo list<a></td>
+
+</tr>
+
 </table>
 
 ## :nerd_face: Usage
@@ -31,10 +41,13 @@ Search for a location and click on search. Thereafter a few cards with quotes wi
 ### Get it local
 
 This app is made with vanilla JS (frontend) and NodeJS (backend).
+
 #### 1). Clone the repository
+
 `git clone https://github.com/jochemvogel/progressive-web-apps-2021.git `
 
 #### 2). Install dependencies
+
 `npm install`
 
 #### 3). Get an API key
@@ -44,30 +57,45 @@ Go to [RapidApi.com](https://rapidapi.com/skyscanner/api/skyscanner-flight-searc
 Copy the `.env.example` file, change the name to `.env` and update the value of the `API_KEY=` to the API key you got from RapidApi.
 
 #### 4). Start development environment
+
 `npm run dev` (Will build & watch automatically)
 
 #### 5). Watch files (manual)
+
 `npm run watch`
 
 #### 6). Build files (manual)
+
 `npm run build`
 
 ## :open_file_folder: Folder Structure
 
-*Will be updated later:*
 ### models
+
 All the data is getting fetch (and processed) in this folder.
+
 ### views
+
 All the (EJS) views can be found here. There is a `/pages` and a `/partials` folder located.
+
 ### controllers
+
 The render controller is located in this folder. Controllers are the 'middleman' between the views & models and reacts to user interaction.
+
 ### routes
+
 All the routes (with it's render functions) are located in `routes/routes.js`.
+
 ### scripts
+
 Here are all the build scripts located.
+
 ### src
-All the js, css and assets are located in this folder. When you build, those files will be optimized and placed in the `/public` folder.
+
+All the js, css and assets are located in this folder. When you build, those files will be optimized and placed in the `/public` folder. All the files in thet `src/assets/` folder will be place in the 'root' of `/public`. The rest will be placed in their dedicated folder.
+
 ### public
+
 This folder is not visible (on default). After you build, the `/public` folder will be created.
 
 ## :package: API Endpoints Structure
@@ -85,8 +113,11 @@ This endpoint is used to fetch user friendly locations like **_Amsterdam_** to l
 #### Parameters
 
 _query_: **Nederland**
+
 _country_: **Nederland**
+
 _currency_: **EUR**
+
 _locale_: **nl-NL**
 
 #### Output
@@ -96,28 +127,46 @@ _locale_: **nl-NL**
     "Places": [
         {
             "PlaceId": "NL-sky",
+
             "PlaceName": "Nederland",
+
             "CountryId": "NL-sky",
+
             "RegionId": "",
+
             "CityId": "-sky",
+
             "CountryName": "Nederland"
         },
+
         {
             "PlaceId": "AMS-sky",
+
             "PlaceName": "Amsterdam Schiphol",
+
             "CountryId": "NL-sky",
+
             "RegionId": "",
+
             "CityId": "AMST-sky",
+
             "CountryName": "Nederland"
         },
+
         {
             "PlaceId": "EIN-sky",
+
             "PlaceName": "Eindhoven",
+
             "CountryId": "NL-sky",
+
             "RegionId": "",
+
             "CityId": "EIND-sky",
+
             "CountryName": "Nederland"
         },
+
         {
             "3, 4, 5, 6, 7, 8, 9": "Same for: Rotterdam, Maastricht, Groningen etc."
         }
@@ -132,10 +181,15 @@ Small side note: It will list all the location that has the query in his name. F
 #### Parameters
 
 _country_: **US**
+
 _currency_: **USD**
+
 _locale_: **en-US**
+
 _originplace_: **SFO-sky** (San Fransisco)
+
 _destinationplace_: **JFK-sky** (New York)
+
 _outboundpartialdate_: **2021-02-10**
 
 #### Output
@@ -145,63 +199,137 @@ _outboundpartialdate_: **2021-02-10**
     "Quotes": [
         {
             "QuoteId": 1,
+
             "MinPrice": 220,
+
             "Direct": true,
+
             "OutboundLeg": {
                 "CarrierIds": [851],
+
                 "OriginId": 81727,
+
                 "DestinationId": 60987,
+
                 "DepartureDate": "2021-02-10T00:00:00"
             },
+
             "QuoteDateTime": "2021-02-08T08:21:00"
         }
     ],
+
     "Carriers": [
         {
             "CarrierId": 851,
+
             "Name": "Alaska Airlines"
         }
     ],
+
     "Places": [
         {
             "Name": "New York John F. Kennedy",
+
             "Type": "Station",
+
             "PlaceId": 60987,
+
             "IataCode": "JFK",
+
             "SkyscannerCode": "JFK",
+
             "CityName": "New York",
+
             "CityId": "NYCA",
+
             "CountryName": "United States"
         },
+
         {
             "Name": "San Francisco International",
+
             "Type": "Station",
+
             "PlaceId": 81727,
+
             "IataCode": "SFO",
+
             "SkyscannerCode": "SFO",
+
             "CityName": "San Francisco",
+
             "CityId": "SFOA",
+
             "CountryName": "United States"
         }
     ],
+
     "Currencies": [
         {
             "Code": "USD",
+
             "Symbol": "$",
+
             "ThousandsSeparator": ",",
+
             "DecimalSeparator": ".",
+
             "SymbolOnLeft": true,
+
             "SpaceBetweenAmountAndSymbol": false,
+
             "RoundingCoefficient": 0,
+
             "DecimalDigits": 2
         }
     ]
 }
 ```
 
+## :rocket: Optimisations
+
+### Performance bingo
+
+**Optimising the critical rending path**
+Reducing the time that a browser needs for rendering the page.
+
+**First view**
+First View is all about optimising the first meaningful paint. It's (like the name suggests) the first time a user visits your page (without cookies & cache of course). Optimising for the First View means render something meaningful as soon as possible.
+
+**Repeat view**
+The Repeat View represents what someone will see if they are coming back to the page some time after visiting it the first time. The Repeat View is all about bytes and caching strategies.
+
+**Perceived performance**
+This is all about perception. How long does it takes (in de mind of the user) to load your application. You can 'improve' this by adding (small) animations/transitions that'll make you application looks smooth. The user thinks that loading will take less longer.
+
+**Runtime performance**
+This is about how the application performs while it's running. Does a button click gives the user immediate feedback or does it takes some time? Are routes loading fast or not?
+
+**Time to first byte**
+This is the time between the moment the user sends a request (i.e. a reload or a button click) and the moment that the first byte on the page is received (how fast does the server respond). If you have a pre rendered (static) site: this will be very fast. The server serves a static HTML file
+
+**First meaningful paint**
+This is all about the primary content. This is the moment that the biggest part of the 'above-the-fold' layout change has happened and the web fonts are loaded. It is when the website becomes useful.
+
+**Time to Interaction**
+This is the between the moment the user sends a request and the user is able to interact with the website.
+
+### Optimisations I did
+
+**Build scripts**
+_Insert here.._
+
+**Caching**
+_Insert here.._
+
 ## :memo: Todo list
+
 -   [ ] **Error handling**. Worked in the WAFS version of this app, but it doesn't work here, yet.
+
 -   [ ] **Improve the forms**. It's not really user friendly right now. The forms are getting cleared after submission, but you don't want this. Those forms needs to be filled with previous data.
+
+-   [ ] **Add store**. Working with cookies right now, but I prefer working with a global state (store). Nice challenge, because I've never build one by myself.
+
 -   [ ] **Come up with new ideas and add those in the backlog**. Ongoing 🙃
 
 ### Backlog
@@ -209,10 +337,17 @@ _outboundpartialdate_: **2021-02-10**
 _Nice to have_-ideas. Won't add them in the todo list, because these are not todos, but just some ideas for improving the app. This list is chronologically ordered.
 
 -   [ ] **Add a few sights that can be visited in the destination.** The unsplash API can be used for this.
+
 -   [ ] **Let the user choose their currency**. It's standard EUR now, but why not make it dynamic.
+
 -   [ ] **Let the user choose between only direct flights**. Maybe a checkbox and it can also be displayed on the details modal.
+
 -   [ ] **Create loader and implement it on API calls.**
+
 -   [ ] **Let users select their budget.**
+
 -   [ ] **Autocomplete the location/airports.** This will improve the UX of the user and prevents the user from filling in the wrong location.
+
 -   [ ] **Random city trip within the users' budget.** Just let them fill in a start point and generate a random city trip. Thinking about the details will come later.
+
 -   [ ] **Think about the USP's.** Think about your users. Why would they choose for ERLIJN and not some other comparison app with more features. Deliver more than others do. What is the value proposition?
