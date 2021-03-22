@@ -18,6 +18,12 @@ const middlewares = [
 app.set("view engine", "ejs");
 app.set("views", "views");
 
+app.use((req, res, next) => {
+    // One year cache header
+    res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60);
+    next();
+})
+
 app.use(middlewares);
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));

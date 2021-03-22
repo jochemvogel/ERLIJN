@@ -1,6 +1,5 @@
 /* ===== UTIL CLASSES ===== */
 
-/* Imported at the top of style.css, because of specificity reasons */
 .hidden {
     visibility: hidden;
 }

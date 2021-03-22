@@ -1,6 +1,3 @@
-@import "./utils.css";
-@import "./keyframes.css";
-
 :root {
     --white-hsl-values: 209, 0%, 99%;
     --black-hsl-values: 209, 0%, 10%;
