@@ -1,7 +1,4 @@
 const gulp = require('gulp')
 
-return gulp.src([
-        './src/sw.js',
-        './src/manifest.json',
-    ])
+return gulp.src(['./src/assets/*.*'])
     .pipe(gulp.dest('./public/'))

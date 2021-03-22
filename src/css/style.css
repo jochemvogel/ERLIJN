@@ -2,7 +2,7 @@
     --white-hsl-values: 209, 0%, 99%;
     --black-hsl-values: 209, 0%, 10%;
     --light-gray-hsl-values: 209, 0%, 95%;
-    --blue-hsl-values: 209, 100%, 50%;
+    --blue-hsl-values: 209, 100%, 40%;
     --dark-blue-hsl-values: 209, 100%, 30%;
     --red-hsl-values: 1, 100%, 50%;
 
@@ -116,7 +116,7 @@ form label {
     left: 0;
     text-align: center;
     width: 100%;
-    color: hsla(var(--black-hsl-values), 0.5);
+    color: hsla(var(--black-hsl-values), 0.9);
     font-family: var(--body-family);
     transition: 0.2s ease all;
     font-size: 1.15em;
