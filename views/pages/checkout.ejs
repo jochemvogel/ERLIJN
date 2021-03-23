@@ -1,56 +1,47 @@
-<%- include('../partials/head') %>
+<% if (isDevelopment) { %>
+    <%- include('../partials/head') %>
+<% } else { %>
+    <%- include('../partials/public/head') %>
+<% }  %>
 
 <section>
     <div class="checkout__content">
         <a href="/">&larr; Go Back</a>
         <h2>Checkout</h2>
 
-        <% if ((typeof ticketDepTime == 'undefined') || (typeof fromLocation == 'undefined')) { %>
-            <p>You haven't booked, yet</p>
+        <% if ((typeof ticketDepTime == 'undefined') || (typeof fromLocation ==
+        'undefined')) { %>
+        <p>You haven't booked, yet</p>
 
-        <% } %>
-
-
-        <% if ((typeof ticketDepTime !== 'undefined') && (typeof fromLocation !== 'undefined')) { %>
+        <% } %> <% if ((typeof ticketDepTime !== 'undefined') && (typeof
+        fromLocation !== 'undefined')) { %>
 
         <hr />
 
         <h3>Summary</h3>
         <p>
             From:
-            <span>
-                <%= fromLocation %>
-            </span>
+            <span> <%= fromLocation %> </span>
         </p>
         <p>
             To:
-            <span>
-                <%= toLocation %>
-            </span>
+            <span> <%= toLocation %> </span>
         </p>
         <p>
             Departure Date:
-            <span>
-                <%= date %>
-            </span>
+            <span> <%= date %> </span>
         </p>
         <p>
             Departure Time:
-            <span>
-                <%= ticketDepTime %>
-            </span>
+            <span> <%= ticketDepTime %> </span>
         </p>
         <p>
             Airline:
-            <span>
-                <%= ticketAirline %>
-            </span>
+            <span> <%= ticketAirline %> </span>
         </p>
         <p>
             Price:
-            <span>
-                €<%= ticketPrice %>,00
-            </span>
+            <span> €<%= ticketPrice %>,00 </span>
         </p>
 
         <hr />
@@ -79,4 +70,8 @@
     </div>
 </section>
 
-<%- include('../partials/footer') %>
+<% if (isDevelopment) { %>
+    <%- include('../partials/end') %>
+<% } else { %>
+    <%- include('../partials/public/end') %>
+<% }  %>

@@ -1,6 +1,6 @@
 const CORE_CACHE = 1
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`
-const CORE_ASSETS = ["manifest.json","icons", "css/style.css", "/offline"]
+const CORE_ASSETS = ["manifest.json","icons", "css/style.css", "js/bundle.min.js", "/offline"]
 
 self.addEventListener('install', (e) => {
     e.waitUntil(

@@ -1,8 +1,16 @@
-<%- include('../partials/head') %>
+<% if (isDevelopment) { %>
+    <%- include('../partials/head') %>
+<% } else { %>
+    <%- include('../partials/public/head') %>
+<% }  %>
 
 <h2>You are offline</h2>
 <button>
     <a href="/">Go to home</a>
 </button>
 
-<%- include('../partials/footer') %>
+<% if (isDevelopment) { %>
+    <%- include('../partials/end') %>
+<% } else { %>
+    <%- include('../partials/public/end') %>
+<% }  %>

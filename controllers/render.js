@@ -1,10 +1,13 @@
 const { convertLocations } = require("../models/places");
 
+let isDevelopment = process.env.IS_DEVELOPMENT;
+
 function getHome(req, res) {
     const result = "";
 
     res.render("pages/home", {
         result,
+        isDevelopment
     });
 }
 
@@ -27,6 +30,7 @@ async function postHome(req, res) {
 
     res.render("pages/home", {
         result,
+        isDevelopment
     });
 }
 
@@ -39,6 +43,7 @@ function getCheckout(req, res) {
         fromLocation: fromInput,
         toLocation: toInput,
         date: dateInput,
+        isDevelopment
     });
 }
 
@@ -57,27 +62,35 @@ function postCheckout(req, res) {
         date: dateInput,
         ticketPrice,
         ticketAirline,
-        ticketDepTime
+        ticketDepTime,
+        isDevelopment
     });
 }
 
 function getOffline(req, res) {
-    res.render("pages/offline");
+    res.render("pages/offline", {
+        isDevelopment
+    });
 }
 
 function getConfirmation(req, res) {
-    res.render("pages/confirmation");
+    res.render("pages/confirmation", {
+        isDevelopment
+    });
 }
 
 function postConfirmation(req, res) {
     const name = req.body.name;
     res.render("pages/confirmation", {
-        name
+        name,
+        isDevelopment
     });
 }
 
 function get404(req, res) {
-    res.render("pages/404");
+    res.render("pages/404", {
+        isDevelopment
+    });
 }
 
 module.exports = { getHome, postHome, getCheckout, postCheckout, getOffline, getConfirmation, postConfirmation, get404 };

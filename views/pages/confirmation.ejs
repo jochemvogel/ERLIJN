@@ -1,10 +1,16 @@
-<%- include('../partials/head') %>
-
+<% if (isDevelopment) { %>
+    <%- include('../partials/head') %>
+<% } else { %>
+    <%- include('../partials/public/head') %>
+<% }  %>
 <section>
     <h2>Confirmation</h2>
 
     <% if (typeof (name) !== 'undefined') { %>
-        <p>Thank you for booking your flight with us, <%= name %>. You, unfortunately,  reached the end of the app. Please go back.</p>
+    <p>
+        Thank you for booking your flight with us, <%= name %>. You,
+        unfortunately, reached the end of the app. Please go back.
+    </p>
     <% } %>
 
     <button>
@@ -12,4 +18,8 @@
     </button>
 </section>
 
-<%- include('../partials/footer') %>
+<% if (isDevelopment) { %>
+    <%- include('../partials/end') %>
+<% } else { %>
+    <%- include('../partials/public/end') %>
+<% }  %>
