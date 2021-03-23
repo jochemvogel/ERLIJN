@@ -355,27 +355,27 @@ Most of the scripts are straight forward. The difference between `build:revision
 
 #### Build scripts
 
-##### [`scripts/build-js.js`](google.nl)
+##### [`scripts/build-js.js`](https://github.com/jochemvogel/progressive-web-apps-2021/blob/master/scripts/build-js.js)
 
 All the (client side) scripts are getting concatenated and minified (`terser`) to one file (`bundle.min.js`) and placed in the `public/js` directory.
 
-##### [`scripts/build-css.js`](google.nl)
+##### [`scripts/build-css.js`](https://github.com/jochemvogel/progressive-web-apps-2021/blob/master/scripts/build-css.js)
 
 First all the css is getting concatenated, then it's getting formatted (with cleanCSS) and eventually it's getting post processed (with autoprefixer). The bundled file will be placed in the `public/css` directory.
 
-##### [`scripts/build-assets.js`](google.nl)
+##### [`scripts/build-assets.js`](https://github.com/jochemvogel/progressive-web-apps-2021/blob/master/scripts/build-assets.js)
 
 It copies all the assets and place it in the `/public` folder. There is also another script named `build-img.js`. It's basically doing the same, but it has a different output directory.
 
-##### [`scripts/revision/revision-hash.js`](google.nl)
+##### [`scripts/revision/revision-hash.js`](https://github.com/jochemvogel/progressive-web-apps-2021/blob/master/scripts/revision/revision-hash.js)
 
 This file creates versioned files of the minified js and css for caching purposes. It also creates a `rev-manifest.json`, so other scripts can rewrite the references to those files based on the `rev-manifest.json`.
 
-##### [`scripts/revision/replace-ejs.js`](google.nl)
+##### [`scripts/revision/replace-ejs.js`](https://github.com/jochemvogel/progressive-web-apps-2021/blob/master/scripts/revision/replace-ejs.js)
 
 The references to `css/min.bundle.css` and `js/min.bundle.js` (in the header and footer) will be replaced to the hashed version.
 
-##### [`scripts/revision/replace-sw.js`](google.nl)
+##### [`scripts/revision/replace-sw.js`](https://github.com/jochemvogel/progressive-web-apps-2021/blob/master/scripts/revision/replace-sw.js)
 
 The references to `css/min.bundle.css` and `js/min.bundle.js` (in the service worker) will be replaced to the hashed version. This is another file, because the target location (`/public`) differs from the ejs files.
 
@@ -384,7 +384,7 @@ The references to `css/min.bundle.css` and `js/min.bundle.js` (in the service wo
 First I used Google Fonts (and their URL). I choose to use local fonts to reduce the amount of external style sheets. Thanks to [Google Webfonts Helper](https://google-webfonts-helper.herokuapp.com/fonts) the fonts are now served locally (improved the _performance_ on Lighthouse with 12 points ^^)
 
 Because of that I received almost 100/100 in Lighthouse (see screenshot).
-![Lighthouse result](https://ibb.co/CMbTS97)
+![Lighthouse result](https://i.ibb.co/jWy1jwM/Screenshot-2021-03-23-at-14-03-43.png)
 
 The only three improvements were:
 
