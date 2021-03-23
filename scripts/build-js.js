@@ -1,5 +1,5 @@
 const gulp = require('gulp')
-const uglify = require('gulp-uglify-es').default
+const terser = require('gulp-terser');
 const concat = require('gulp-concat');
 
 
@@ -7,5 +7,5 @@ return gulp.src([
         './src/js/*.js'
     ])
     .pipe(concat('bundle.min.js'))
-    .pipe(uglify({ mangle: false }))
+    .pipe(terser({ mangle: false }))
     .pipe(gulp.dest('./public/js'))

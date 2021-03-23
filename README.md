@@ -290,36 +290,91 @@ _outboundpartialdate_: **2021-02-10**
 
 ### Performance bingo
 
-**Optimising the critical rending path**
+#### Optimising the critical rending path
+
 Reducing the time that a browser needs for rendering the page.
 
-**First view**
+#### First view
+
 First View is all about optimising the first meaningful paint. It's (like the name suggests) the first time a user visits your page (without cookies & cache of course). Optimising for the First View means render something meaningful as soon as possible.
 
-**Repeat view**
+#### Repeat view
+
 The Repeat View represents what someone will see if they are coming back to the page some time after visiting it the first time. The Repeat View is all about bytes and caching strategies.
 
-**Perceived performance**
+#### Perceived performance
+
 This is all about perception. How long does it takes (in de mind of the user) to load your application. You can 'improve' this by adding (small) animations/transitions that'll make you application looks smooth. The user thinks that loading will take less longer.
 
-**Runtime performance**
+#### Runtime performance
+
 This is about how the application performs while it's running. Does a button click gives the user immediate feedback or does it takes some time? Are routes loading fast or not?
 
-**Time to first byte**
+#### Time to first byte
+
 This is the time between the moment the user sends a request (i.e. a reload or a button click) and the moment that the first byte on the page is received (how fast does the server respond). If you have a pre rendered (static) site: this will be very fast. The server serves a static HTML file
 
-**First meaningful paint**
+#### First meaningful paint
+
 This is all about the primary content. This is the moment that the biggest part of the 'above-the-fold' layout change has happened and the web fonts are loaded. It is when the website becomes useful.
 
-**Time to Interaction**
+#### Time to Interaction
+
 This is the between the moment the user sends a request and the user is able to interact with the website.
 
 ### Optimisations I did
 
-**Build scripts**
-_Insert here.._
+#### NPM Scripts
+
+```json
+"scripts":  {
+	"start":  "node",
+	"dev":  "nodemon & npm run build & npm run watch",
+	"prebuild":  "rimraf ./public",
+	"build":  "npm-run-all build:* && npm run revision",
+	"build:css":  "node scripts/build-css.js",
+	"build:js":  "node scripts/build-js.js",
+	"build:assets":  "node scripts/build-assets.js",
+	"build:img":  "node scripts/build-img.js",
+	"build:revision":  "node scripts/revision/revision-hash.js",,
+	"revision":  "node scripts/revision/replace-ejs.js & node scripts/revision/replace-sw.js",
+	"watch":  "npm-run-all watch:*",
+	"watch:css":  "chokidar \"src/css/*.css\" --c \"npm run build:css\"",
+	"watch:js":  "chokidar \"src/js/*.js\" --c \"npm run build:js\"",
+	"watch:assets":  "chokidar 'src/**/*.*' --command 'npm run build:static:assets'"
+},
+```
+
+Most of the scripts are straight forward. The difference between `build:revision` and `revision` is that `build:revision` will make the `rev-manifest.json` and create the new versioned files, while `revision` rewrites the references in the header, footer & service worker. Not really satisfied with the naming, but I can't really come up with better names.
+
+#### Build scripts
+
+##### [`scripts/build-js.js`](google.nl)
+
+All the (client side) scripts are getting concatenated and minified (`terser`) to one file (`bundle.min.js`) and placed in the `public/js` directory.
+
+##### [`scripts/build-css.js`](google.nl)
+
+First all the css is getting concatenated, then it's getting formatted (with cleanCSS) and eventually it's getting post processed (with autoprefixer). The bundled file will be placed in the `public/css` directory.
+
+##### [`scripts/build-assets.js`](google.nl)
+
+It copies all the assets and place it in the `/public` folder. There is also another script named `build-img.js`. It's basically doing the same, but it has a different output directory.
+
+##### [`scripts/revision/revision-hash.js`](google.nl)
+
+This file creates versioned files of the minified js and css for caching purposes. It also creates a `rev-manifest.json`, so other scripts can rewrite the references to those files based on the `rev-manifest.json`.
+
+##### [`scripts/revision/replace-ejs.js`](google.nl)
+
+The references to `css/min.bundle.css` and `js/min.bundle.js` (in the header and footer) will be replaced to the hashed version.
+
+##### [`scripts/revision/replace-sw.js`](google.nl)
+
+The references to `css/min.bundle.css` and `js/min.bundle.js` (in the service worker) will be replaced to the hashed version. This is another file, because the target location (`/public`) differs from the ejs files.
 
 **Caching**
+
 _Insert here.._
 
 ## :memo: Todo list
