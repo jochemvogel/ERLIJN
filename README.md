@@ -18,6 +18,8 @@ ERLIJN is a search engine for (cheap) flights where you can search and book flig
 
 <td align="center"><a href="#package-api-endpoints-structure">📦 API Structure<a></td>
 
+<td align="center"><a href="#construction_worker-service-worker">👷‍♂️ Service Worker<a></td>
+
 <td align="center"><a href="#rocket-optimisations">🚀 Optimisations<a></td>
 
 <td align="center"><a href="#memo-todo-list">📝 Todo list<a></td>
@@ -286,6 +288,10 @@ _outboundpartialdate_: **2021-02-10**
 }
 ```
 
+## :construction_worker: Service Worker
+
+_Insert SW stuff_
+
 ## :rocket: Optimisations
 
 ### Performance bingo
@@ -373,9 +379,20 @@ The references to `css/min.bundle.css` and `js/min.bundle.js` (in the header and
 
 The references to `css/min.bundle.css` and `js/min.bundle.js` (in the service worker) will be replaced to the hashed version. This is another file, because the target location (`/public`) differs from the ejs files.
 
-**Caching**
+### Local fonts
 
-_Insert here.._
+First I used Google Fonts (and their URL). I choose to use local fonts to reduce the amount of external style sheets. Thanks to [Google Webfonts Helper](https://google-webfonts-helper.herokuapp.com/fonts) the fonts are now served locally (improved the _performance_ on Lighthouse with 12 points ^^)
+
+Because of that I received almost 100/100 in Lighthouse (see screenshot).
+![Lighthouse result](https://ibb.co/CMbTS97)
+
+The only three improvements were:
+
+1.  Reduce initial server response time (Heroku thing)
+2.  Preload key requests (No idea how to fix this. I use local fonts and it suggests to add `<link rel=preload>`, but that doesn't make sense).
+3.  Eliminate render-blocking resources (Probably could something with splitting, but had no time to fix that).
+
+I'm pretty satisfied, because without that heroku thing I will have 100/100. Worked hard to get the PWA section 100/100 as well, but didn't figure out how to redirect HTTP traffic automatically to HTTPS. Tried in Node (`res.redirect`), tried with a `.htaccess`, but nothing worked. Doesn't really matter, so did not spend too much time on it.
 
 ## :memo: Todo list
 
