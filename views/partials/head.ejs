@@ -18,4 +18,8 @@
 	</head>
 	<body>
     <div class="container">
-        <%- include('header') %>
+        <% if (isDevelopment) { %>
+            <%- include('header') %>
+        <% } else { %>
+            <%- include('../header') %>
+        <% }  %>
