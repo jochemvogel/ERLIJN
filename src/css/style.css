@@ -331,6 +331,15 @@ body section {
     width: 100%;
 }
 
+.booked-btn {
+    margin-top: 2em;
+}
+
+.booked-btn a {
+    text-decoration: none;
+    color: var(--white);
+}
+
 /* ===== TABLET BREAKPOINT ===== */
 @media screen and (min-width: 768px) {
     .search-container {

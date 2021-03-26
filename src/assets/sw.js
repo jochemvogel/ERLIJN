@@ -1,4 +1,4 @@
-const CORE_CACHE = 1;
+const CORE_CACHE = 2;
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`;
 const CORE_ASSETS = [
     "manifest.json",
@@ -6,6 +6,7 @@ const CORE_ASSETS = [
     "css/style.css",
     "js/bundle.min.js",
     "/offline",
+    "/checkout"
 ];
 
 self.addEventListener("install", (e) => {

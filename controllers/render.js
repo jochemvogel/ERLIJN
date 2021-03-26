@@ -32,6 +32,7 @@ async function postHome(req, res) {
     const toInputValue = req.body.to;
     const dateInputValue = req.body.date;
     let result;
+    let formValues = "";
 
     res.setHeader("Set-Cookie", [
         `fromInput=${fromInputValue}`,
@@ -49,9 +50,24 @@ async function postHome(req, res) {
         result = 'No results'
     }
 
+    const fromInput = req.cookies.fromInput;
+    const toInput = req.cookies.toInput;
+    const dateInput = req.cookies.dateInput;
+
+    /* Render cards of previous search */
+    if (fromInput !== undefined) {
+        result = await convertLocations(fromInput, toInput, dateInput);
+        formValues = {
+            fromInput,
+            toInput,
+            dateInput
+        }
+    }
+
     res.render("pages/home", {
         result,
-        isDevelopment,
+        formValues,
+        isDevelopment
     });
 }
 
@@ -60,10 +76,23 @@ function getCheckout(req, res) {
     const toInput = req.cookies.toInput;
     const dateInput = req.cookies.dateInput;
 
+    let ticketPrice = "";
+    let ticketAirline = "";
+    let ticketDepTime = "";
+
+    if (req.cookies.ticketPrice) {
+        ticketPrice = req.cookies.ticketPrice;
+        ticketAirline = req.cookies.ticketAirline;
+        ticketDepTime = req.cookies.ticketDepTime;
+    }
+
     res.render("pages/checkout", {
         fromLocation: fromInput,
         toLocation: toInput,
         date: dateInput,
+        ticketPrice,
+        ticketAirline,
+        ticketDepTime,
         isDevelopment,
     });
 }
@@ -76,6 +105,12 @@ function postCheckout(req, res) {
     const ticketPrice = req.body.price;
     const ticketAirline = req.body.airline;
     const ticketDepTime = req.body.time;
+
+    res.setHeader("Set-Cookie", [
+        `ticketPrice=${ticketPrice}`,
+        `ticketAirline=${ticketAirline}`,
+        `ticketDepTime=${ticketDepTime}`,
+    ]);
 
     res.render("pages/checkout", {
         fromLocation: fromInput,
