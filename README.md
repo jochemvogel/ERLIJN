@@ -1,6 +1,6 @@
 # Progressive Web Apps @cmda-minor-web · 20-21
 
-**[Live link](https://erlijn.herokuapp.com//)**
+**[Live link](https://erlijn.herokuapp.com/)**
 
 ERLIJN is a search engine for (cheap) flights where you can search and book flights.
 
@@ -9,21 +9,13 @@ ERLIJN is a search engine for (cheap) flights where you can search and book flig
 <table>
 
 <tr>
-
-<td align="center"><a href="#nerd_face-usage">🤓 Usage<a></td>
-
-<td align="center"><a href="#gear-installation">⚙️ Installation<a></td>
-
-<td align="center"><a href="#open_file_folder-folder-structure">🗂 Folder Structure<a></td>
-
-<td align="center"><a href="#package-api-endpoints-structure">📦 API Structure<a></td>
-
-<td align="center"><a href="#construction_worker-service-worker">👷‍♂️ Service Worker<a></td>
-
-<td align="center"><a href="#rocket-optimisations">🚀 Optimisations<a></td>
-
-<td align="center"><a href="#memo-todo-list">📝 Todo list<a></td>
-
+    <td align="center"><a href="#nerd_face-usage">🤓 Usage<a></td>
+    <td align="center"><a href="#gear-installation">⚙️ Installation<a></td>
+    <td align="center"><a href="#open_file_folder-folder-structure">🗂 Folder Structure<a></td>
+    <td align="center"><a href="#package-api-endpoints-structure">📦 API Structure<a></td>
+    <td align="center"><a href="#construction_worker-service-worker">👷‍♂️ Service Worker<a></td>
+    <td align="center"><a href="#rocket-optimisations">🚀 Optimisations<a></td>
+    <td align="center"><a href="#memo-backlog">📝 Backlog<a></td>
 </tr>
 
 </table>
@@ -71,6 +63,14 @@ Copy the `.env.example` file, change the name to `.env` and update the value of 
 `npm run build`
 
 ## :open_file_folder: Folder Structure
+
+<details>
+
+<summary>Screenshot folder structure</summary>
+
+![Folder structure](https://i.ibb.co/Dtnx8Vd/Screenshot-2021-03-26-at-11-28-39.png)
+
+</details>
 
 ### models
 
@@ -124,57 +124,45 @@ _locale_: **nl-NL**
 
 #### Output
 
+<details>
+<summary>See the output</summary>
+
 ```json
 {
     "Places": [
         {
             "PlaceId": "NL-sky",
-
             "PlaceName": "Nederland",
-
             "CountryId": "NL-sky",
-
             "RegionId": "",
-
             "CityId": "-sky",
-
             "CountryName": "Nederland"
         },
 
         {
             "PlaceId": "AMS-sky",
-
             "PlaceName": "Amsterdam Schiphol",
-
             "CountryId": "NL-sky",
-
             "RegionId": "",
-
             "CityId": "AMST-sky",
-
             "CountryName": "Nederland"
         },
-
         {
             "PlaceId": "EIN-sky",
-
             "PlaceName": "Eindhoven",
-
             "CountryId": "NL-sky",
-
             "RegionId": "",
-
             "CityId": "EIND-sky",
-
             "CountryName": "Nederland"
         },
-
         {
             "3, 4, 5, 6, 7, 8, 9": "Same for: Rotterdam, Maastricht, Groningen etc."
         }
     ]
 }
 ```
+
+</details>
 
 Small side note: It will list all the location that has the query in his name. For example: all the airports in `Caribisch Nederland` will also be included in the query `Nederland`. Be aware of that.
 
@@ -196,97 +184,70 @@ _outboundpartialdate_: **2021-02-10**
 
 #### Output
 
+ <details>
+
+<summary>See the output</summary>
+
 ```json
 {
     "Quotes": [
         {
             "QuoteId": 1,
-
             "MinPrice": 220,
-
             "Direct": true,
-
             "OutboundLeg": {
                 "CarrierIds": [851],
-
                 "OriginId": 81727,
-
                 "DestinationId": 60987,
-
                 "DepartureDate": "2021-02-10T00:00:00"
             },
-
             "QuoteDateTime": "2021-02-08T08:21:00"
         }
     ],
-
     "Carriers": [
         {
             "CarrierId": 851,
-
             "Name": "Alaska Airlines"
         }
     ],
-
     "Places": [
         {
             "Name": "New York John F. Kennedy",
-
             "Type": "Station",
-
             "PlaceId": 60987,
-
             "IataCode": "JFK",
-
             "SkyscannerCode": "JFK",
-
             "CityName": "New York",
-
             "CityId": "NYCA",
-
             "CountryName": "United States"
         },
-
         {
             "Name": "San Francisco International",
-
             "Type": "Station",
-
             "PlaceId": 81727,
-
             "IataCode": "SFO",
-
             "SkyscannerCode": "SFO",
-
             "CityName": "San Francisco",
-
             "CityId": "SFOA",
-
             "CountryName": "United States"
         }
     ],
-
     "Currencies": [
         {
             "Code": "USD",
-
             "Symbol": "$",
-
             "ThousandsSeparator": ",",
-
             "DecimalSeparator": ".",
-
             "SymbolOnLeft": true,
-
             "SpaceBetweenAmountAndSymbol": false,
-
             "RoundingCoefficient": 0,
-
             "DecimalDigits": 2
         }
     ]
 }
 ```
+
+</details>
 
 ## :construction_worker: Service Worker
 
@@ -335,22 +296,24 @@ This is the between the moment the user sends a request and the user is able to 
 #### NPM Scripts
 
 ```json
-"scripts":  {
-	"start":  "node",
-	"dev":  "nodemon & npm run build & npm run watch",
-	"prebuild":  "rimraf ./public",
-	"build":  "npm-run-all build:* && npm run revision",
-	"build:css":  "node scripts/build-css.js",
-	"build:js":  "node scripts/build-js.js",
-	"build:assets":  "node scripts/build-assets.js",
-	"build:img":  "node scripts/build-img.js",
-	"build:revision":  "node scripts/revision/revision-hash.js",,
-	"revision":  "node scripts/revision/replace-ejs.js & node scripts/revision/replace-sw.js",
-	"watch":  "npm-run-all watch:*",
-	"watch:css":  "chokidar \"src/css/*.css\" --c \"npm run build:css\"",
-	"watch:js":  "chokidar \"src/js/*.js\" --c \"npm run build:js\"",
-	"watch:assets":  "chokidar 'src/**/*.*' --command 'npm run build:static:assets'"
+
+"scripts": {
+    "start":  "node",
+    "dev":  "nodemon & npm run build & npm run watch",
+    "prebuild":  "rimraf ./public",
+    "build":  "npm-run-all build:* && npm run revision",
+    "build:css":  "node scripts/build-css.js",
+    "build:js":  "node scripts/build-js.js",
+    "build:assets":  "node scripts/build-assets.js",
+    "build:img":  "node scripts/build-img.js",
+    "build:revision":  "node scripts/revision/revision-hash.js",,
+    "revision":  "node scripts/revision/replace-ejs.js & node scripts/revision/replace-sw.js",
+    "watch":  "npm-run-all watch:*",
+    "watch:css":  "chokidar \"src/css/*.css\" --c \"npm run build:css\"",
+    "watch:js":  "chokidar \"src/js/*.js\" --c \"npm run build:js\"",
+    "watch:assets":  "chokidar 'src/**/*.*' --command 'npm run build:static:assets'"
 },
+
 ```
 
 Most of the scripts are straight forward. The difference between `build:revision` and `revision` is that `build:revision` will make the `rev-manifest.json` and create the new versioned files, while `revision` rewrites the references in the header, footer & service worker. Not really satisfied with the naming, but I can't really come up with better names.
@@ -386,42 +349,19 @@ The references to `css/min.bundle.css` and `js/min.bundle.js` (in the service wo
 First I used Google Fonts (and their URL). I choose to use local fonts to reduce the amount of external style sheets. Thanks to [Google Webfonts Helper](https://google-webfonts-helper.herokuapp.com/fonts) the fonts are now served locally (improved the _performance_ on Lighthouse with 12 points ^^)
 
 Because of that I received almost 100/100 in Lighthouse (see screenshot).
+
 ![Lighthouse result](https://i.ibb.co/jWy1jwM/Screenshot-2021-03-23-at-14-03-43.png)
 
 The only three improvements were:
 
 1.  Reduce initial server response time (Heroku thing)
+
 2.  Preload key requests (No idea how to fix this. I use local fonts and it suggests to add `<link rel=preload>`, but that doesn't make sense).
+
 3.  Eliminate render-blocking resources (Probably could something with splitting, but had no time to fix that).
 
 I'm pretty satisfied, because without that heroku thing I will have 100/100. Worked hard to get the PWA section 100/100 as well, but didn't figure out how to redirect HTTP traffic automatically to HTTPS. Tried in Node (`res.redirect`), tried with a `.htaccess`, but nothing worked. Doesn't really matter, so did not spend too much time on it.
 
-## :memo: Todo list
+## :memo: Backlog
 
--   [ ] **Error handling**. Worked in the WAFS version of this app, but it doesn't work here, yet.
-
--   [ ] **Improve the forms**. It's not really user friendly right now. The forms are getting cleared after submission, but you don't want this. Those forms needs to be filled with previous data.
-
--   [ ] **Add store**. Working with cookies right now, but I prefer working with a global state (store). Nice challenge, because I've never build one by myself.
-
--   [ ] **Come up with new ideas and add those in the backlog**. Ongoing 🙃
-
-### Backlog
-
-_Nice to have_-ideas. Won't add them in the todo list, because these are not todos, but just some ideas for improving the app. This list is chronologically ordered.
-
--   [ ] **Add a few sights that can be visited in the destination.** The unsplash API can be used for this.
-
--   [ ] **Let the user choose their currency**. It's standard EUR now, but why not make it dynamic.
-
--   [ ] **Let the user choose between only direct flights**. Maybe a checkbox and it can also be displayed on the details modal.
-
--   [ ] **Create loader and implement it on API calls.**
-
--   [ ] **Let users select their budget.**
-
--   [ ] **Autocomplete the location/airports.** This will improve the UX of the user and prevents the user from filling in the wrong location.
-
--   [ ] **Random city trip within the users' budget.** Just let them fill in a start point and generate a random city trip. Thinking about the details will come later.
-
--   [ ] **Think about the USP's.** Think about your users. Why would they choose for ERLIJN and not some other comparison app with more features. Deliver more than others do. What is the value proposition?
+The backlog can be found in the [projects tab](https://github.com/jochemvogel/progressive-web-apps-2021/projects/1). The backlog is filled with issues. If you have any suggestions/feedback: add a new issue and please add the right label. Thanks in advance!

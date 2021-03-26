@@ -2,11 +2,27 @@ const { convertLocations } = require("../models/places");
 
 let isDevelopment = process.env.IS_DEVELOPMENT;
 
-function getHome(req, res) {
-    const result = "";
+async function getHome(req, res) {
+    let result = "";
+    let formValues = "";
+
+    const fromInput = req.cookies.fromInput;
+    const toInput = req.cookies.toInput;
+    const dateInput = req.cookies.dateInput;
+
+    /* Render cards of previous search */
+    if (fromInput !== undefined) {
+        result = await convertLocations(fromInput, toInput, dateInput);
+        formValues = {
+            fromInput,
+            toInput,
+            dateInput
+        }
+    }
 
     res.render("pages/home", {
         result,
+        formValues,
         isDevelopment,
     });
 }
@@ -15,6 +31,7 @@ async function postHome(req, res) {
     const fromInputValue = req.body.from;
     const toInputValue = req.body.to;
     const dateInputValue = req.body.date;
+    let result;
 
     res.setHeader("Set-Cookie", [
         `fromInput=${fromInputValue}`,
@@ -22,11 +39,15 @@ async function postHome(req, res) {
         `dateInput=${dateInputValue}`,
     ]);
 
-    const result = await convertLocations(
+    result = await convertLocations(
         fromInputValue,
         toInputValue,
         dateInputValue
     );
+
+    if (result === undefined) {
+        result = 'No results'
+    }
 
     res.render("pages/home", {
         result,

@@ -17,7 +17,7 @@
     --body-family: "Raleway", sans-serif;
 }
 
-/* raleway-regular - latin */
+/* Raleway-regular - latin */
 @font-face {
     font-family: "Raleway";
     font-style: normal;
@@ -39,7 +39,7 @@
             format("svg"); /* Legacy iOS */
 }
 
-/* raleway-700 - latin */
+/* Raleway-700 - latin */
 @font-face {
     font-family: "Raleway";
     font-style: normal;
@@ -60,7 +60,7 @@
             format("svg"); /* Legacy iOS */
 }
 
-/* potta-one-regular - latin */
+/* Potta-one-regular - latin */
 @font-face {
     font-family: "Potta One";
     font-style: normal;
@@ -89,6 +89,10 @@ body {
     background: var(--light-grey);
     color: var(--black);
     font-family: var(--body-family);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2em;
 }
 
 h1 {
@@ -200,25 +204,18 @@ section {
 /* ===== !CLASSES! ===== */
 
 /* ===== CONTAINERS ===== */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 2em;
-}
-
-.container h1::after {
+body h1::after {
     position: absolute;
     content: "✈️";
     z-index: 2;
 }
 
-.container h1:hover::after {
+body h1:hover::after {
     animation: airplaneFlight 15s linear forwards;
     transform: rotate(45deg);
 }
 
-.container section {
+body section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -280,83 +277,6 @@ section {
 .card__min-price {
     font-size: 1.25em;
     margin-top: 0;
-}
-
-/* ===== DETAILS MODAL ===== */
-.card-modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 125vh;
-    margin-top: -5vh;
-    position: absolute;
-    top: -25%;
-    bottom: 0;
-    background-color: hsla(var(--black-hsl-values), 0.95);
-    color: var(--black);
-    z-index: 2;
-}
-
-.card-modal__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90vw;
-    height: 80vh;
-    background-color: var(--light-grey);
-    padding: 2px 20px;
-    position: relative;
-}
-
-.card-modal__content h2 {
-    font-size: 2em;
-}
-
-.card-modal__content h3 {
-    margin-top: 0;
-    font-weight: bold;
-    font-size: 1.5em;
-}
-
-.card-modal__content p {
-    font-size: 1.15em;
-    font-weight: 700;
-    margin: 0.5em;
-}
-
-.card-modal__content span {
-    font-weight: 400;
-}
-
-.card-modal__content img {
-    margin-top: 1em;
-    background-color: hsla(var(--black-hsl-values), 0.25);
-    height: 11em;
-    width: 80%;
-}
-
-.card-modal__content hr {
-    border-top: 1px dashed hsla(var(--black-hsl-values), 0.3);
-    border-bottom: none;
-    width: 80%;
-}
-
-.card-modal__content button:last-of-type {
-    position: absolute;
-    font-size: 0.9em;
-    bottom: 3%;
-}
-
-.card-modal__close {
-    color: var(--black);
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 3em;
-    text-decoration: none;
 }
 
 /* ===== CHECKOUT PAGE ===== */

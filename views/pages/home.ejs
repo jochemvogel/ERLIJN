@@ -6,6 +6,7 @@
 <section>
     <div class="search-container">
         <form method="post" action="/">
+            <% if (formValues.fromInput) { %>
             <div>
                 <input
                     data-form-from
@@ -13,6 +14,7 @@
                     required
                     aria-label="Departure location"
                     name="from"
+                    value="<%- formValues.fromInput %>"
                 />
                 <label>From</label>
             </div>
@@ -24,6 +26,7 @@
                     required
                     aria-label="Destination"
                     name="to"
+                    value="<%- formValues.toInput %>"
                 />
                 <label>To</label>
             </div>
@@ -35,8 +38,44 @@
                     required
                     aria-label="Departure date"
                     name="date"
+                    value="<%- formValues.dateInput %>"
                 />
             </div>
+
+            <% } else { %>
+                <div>
+                    <input
+                        data-form-from
+                        type="text"
+                        required
+                        aria-label="Departure location"
+                        name="from"
+                    />
+                    <label>From</label>
+                </div>
+
+                <div>
+                    <input
+                        data-form-to
+                        type="text"
+                        required
+                        aria-label="Destination"
+                        name="to"
+                    />
+                    <label>To</label>
+                </div>
+
+                <div>
+                    <input
+                        data-form-date
+                        type="date"
+                        required
+                        aria-label="Departure date"
+                        name="date"
+                    />
+                </div>
+
+            <% } %>
 
             <button id="search-btn" class="btn search-btn" type="submit">
                 Search
@@ -49,7 +88,12 @@
         </div> -->
     </div>
 
+    <% if (result === 'No results') { %>
+        <h2>Oops.. No flights available </h2>
+    <% } %>
+
     <% if (result.Quotes !== undefined) { %>
+
     <!-- Card container -->
     <p class="flight-data__places">
         <%= result.Places[0].Name %> - <%= result.Places[1].Name %>
