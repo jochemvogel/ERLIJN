@@ -7,7 +7,7 @@ function getHome(req, res) {
 
     res.render("pages/home", {
         result,
-        isDevelopment
+        isDevelopment,
     });
 }
 
@@ -30,7 +30,7 @@ async function postHome(req, res) {
 
     res.render("pages/home", {
         result,
-        isDevelopment
+        isDevelopment,
     });
 }
 
@@ -43,7 +43,7 @@ function getCheckout(req, res) {
         fromLocation: fromInput,
         toLocation: toInput,
         date: dateInput,
-        isDevelopment
+        isDevelopment,
     });
 }
 
@@ -63,19 +63,19 @@ function postCheckout(req, res) {
         ticketPrice,
         ticketAirline,
         ticketDepTime,
-        isDevelopment
+        isDevelopment,
     });
 }
 
 function getOffline(req, res) {
     res.render("pages/offline", {
-        isDevelopment
+        isDevelopment,
     });
 }
 
 function getConfirmation(req, res) {
     res.render("pages/confirmation", {
-        isDevelopment
+        isDevelopment,
     });
 }
 
@@ -83,14 +83,23 @@ function postConfirmation(req, res) {
     const name = req.body.name;
     res.render("pages/confirmation", {
         name,
-        isDevelopment
+        isDevelopment,
     });
 }
 
 function get404(req, res) {
     res.render("pages/404", {
-        isDevelopment
+        isDevelopment,
     });
 }
 
-module.exports = { getHome, postHome, getCheckout, postCheckout, getOffline, getConfirmation, postConfirmation, get404 };
+module.exports = {
+    getHome,
+    postHome,
+    getCheckout,
+    postCheckout,
+    getOffline,
+    getConfirmation,
+    postConfirmation,
+    get404,
+};

@@ -290,7 +290,9 @@ _outboundpartialdate_: **2021-02-10**
 
 ## :construction_worker: Service Worker
 
-_Insert SW stuff_
+### Why do you need a service worker for this app?
+
+Imagine you're in a country outside Europe and you don't have internet (besides shitty hotel Wifi). Suddenly your sister calls and says that her baby is born. You really want to see it and decided to book a last minute flight to home for the next day via ERLIJN. It's your last day at this sunny destination, so you want to enjoy the sun and the beach. Because of that you're a little bit late for your flight, so you're in a hurry and a little bit stressed out. You booked a cap and went to the airport. While sitting in the cap (with no internet) you no longer knew what time the flight was. You want to visit ERLIJN to see all the flight details (you're in such a hurry that you didn't thought about the flight confirmation mail). Fortunately the developers implemented the wonderful service worker, so you can see the details of the flight you visited before. You see that you have enough time left and you'll be reunited with your family within a few hours. What a wonderful story and it all started with the service worker. ❤️
 
 ## :rocket: Optimisations
 
