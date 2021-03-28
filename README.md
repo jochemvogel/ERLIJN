@@ -251,6 +251,12 @@ _outboundpartialdate_: **2021-02-10**
 
 ## :construction_worker: Service Worker
 
+During this course I learned to make a PWA (based on the app I made in WAFS). One aspect of it was server side rendering (with Node). I'd never (really) worked with Node (and EJS) before, so in the beginning it was hard to understand everything. Beside that we also learned how to work with service workers and manifests. Last but no least I research a lot about caching and implemented those things in the service worker and the building scripts.
+
+I haven't covered everything that is possible with the service worker, yet. There was so much to do. You can fill your whole day with learning about, caching or PWAs in general or Node or building scripts etc.
+
+Overall I think I have a good understanding what service workers can do, but I'm sure I do not know everything about it.
+
 ### Why do you need a service worker for this app?
 
 Imagine you're in a country outside Europe and you don't have internet (besides shitty hotel Wifi). Suddenly your sister calls and says that her baby is born. You really want to see it and decided to book a last minute flight to home for the next day via ERLIJN. It's your last day at this sunny destination, so you want to enjoy the sun and the beach. Because of that you're a little bit late for your flight, so you're in a hurry and a little bit stressed out. You booked a cap and went to the airport. While sitting in the cap (with no internet) you no longer knew what time the flight was. You want to visit ERLIJN to see all the flight details (you're in such a hurry that you didn't thought about the flight confirmation mail). Fortunately the developers implemented the wonderful service worker, so you can see the details of the flight you visited before. You see that you have enough time left and you'll be reunited with your family within a few hours. What a wonderful story and it all started with the service worker. ❤️
@@ -306,7 +312,7 @@ This is the between the moment the user sends a request and the user is able to 
     "build:js":  "node scripts/build-js.js",
     "build:assets":  "node scripts/build-assets.js",
     "build:img":  "node scripts/build-img.js",
-    "build:revision":  "node scripts/revision/revision-hash.js",,
+    "build:revision":  "node scripts/revision/revision-hash.js",
     "revision":  "node scripts/revision/replace-ejs.js & node scripts/revision/replace-sw.js",
     "watch":  "npm-run-all watch:*",
     "watch:css":  "chokidar \"src/css/*.css\" --c \"npm run build:css\"",
