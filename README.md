@@ -368,6 +368,20 @@ The only three improvements were:
 
 I'm pretty satisfied, because without that heroku thing I will have 100/100. Worked hard to get the PWA section 100/100 as well, but didn't figure out how to redirect HTTP traffic automatically to HTTPS. Tried in Node (`res.redirect`), tried with a `.htaccess`, but nothing worked. Doesn't really matter, so did not spend too much time on it.
 
+### Webpagetest
+
+Average first view was 1,132s and average repeat view was 0,261s. This is pretty good and you see the caching does it work.
+
+![Webpage test](https://i.ibb.co/XXv4KnM/Screenshot-2021-03-28-at-21-41-02.png)
+
+Two concrete tips:
+
+1.  Use GZIP Compression
+
+2.  Use a CDN
+
+You can see the whole result [here](https://www.webpagetest.org/result/210328_XiWZ_ab2966bec92469aa5379dfada68a4f43/)
+
 ## :memo: Backlog
 
 The backlog can be found in the [projects tab](https://github.com/jochemvogel/progressive-web-apps-2021/projects/1). The backlog is filled with issues. If you have any suggestions/feedback: add a new issue and please add the right label. Thanks in advance!
