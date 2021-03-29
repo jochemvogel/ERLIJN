@@ -1,9 +1,9 @@
-const CORE_CACHE = 2;
+const CORE_CACHE = 3;
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`;
 const CORE_ASSETS = [
     "manifest.json",
-    "icons",
-    "css/style.css",
+    "/img/icons",
+    "css/bundle.min.css",
     "js/bundle.min.js",
     "/offline",
     "/checkout"
@@ -23,9 +23,9 @@ self.addEventListener("activate", (e) => {
     e.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
-                cacheNames.map((cache) => {
-                    if (cache !== CORE_CACHE_NAME) {
-                        return caches.delete(cache);
+                cacheNames.map((cacheName) => {
+                    if (cacheName !== CORE_CACHE_NAME) {
+                        return caches.delete(cacheName);
                     }
                 })
             );

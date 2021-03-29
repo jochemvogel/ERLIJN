@@ -1,16 +1,22 @@
-<% if (isDevelopment) { %>
-    <%- include('../partials/head') %>
-<% } else { %>
-    <%- include('../partials/public/head') %>
-<% }  %>
+<% if (isDevelopment) { %> <%- include('../partials/head') %> <% } else { %> <%-
+include('../partials/public/head') %> <% } %>
 
-<h2>You are offline</h2>
-<button>
-    <a href="/">Go to home</a>
-</button>
+<section class="offline">
+    <h2>You are offline</h2>
+    <p>
+        You still can visit the pages that you've already visited. If you've already viewed/booked a flight, you go to the checkout page.
+    </p>
+
+    <button class="btn">
+        <a href="/">Go to home</a>
+    </button>
+
+    <button class="btn checkout-btn">
+        <a href="/checkout">Go to checkout</a>
+    </button>
+</section>
 
 <% if (isDevelopment) { %>
     <%- include('../partials/end') %>
 <% } else { %>
-    <%- include('../partials/public/end') %>
-<% }  %>
+    <%-include('../partials/public/end') %> <% } %>

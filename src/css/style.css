@@ -331,13 +331,9 @@ body section {
     width: 100%;
 }
 
-.booked-btn {
+.booked-btn,
+.checkout-btn {
     margin-top: 2em;
-}
-
-.booked-btn a {
-    text-decoration: none;
-    color: var(--white);
 }
 
 /* ===== TABLET BREAKPOINT ===== */
@@ -388,4 +384,9 @@ body section {
         font-size: 1.2rem;
         max-width: 700px;
     }
+}
+
+.not-found h3,
+.offline p {
+    text-align: center;
 }
