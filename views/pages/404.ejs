@@ -4,9 +4,10 @@ include('../partials/public/head') %> <% } %>
 <section class="not-found">
     <h2>Whoopsie..</h2>
     <h3>We couldn't find the page where you was looking for 🕵🏻‍♂️</h3>
-    <button class="btn home-btn">
-        <a href="/">Go to home</a>
-    </button>
+
+    <form action="/" method="GET">
+        <button class="btn">Go to home</button>
+    </form>
 </section>
 
 <% if (isDevelopment) { %> <%- include('../partials/end') %> <% } else { %> <%-
