@@ -1,4 +1,4 @@
-const CORE_CACHE = 4;
+const CORE_CACHE = 5;
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`;
 const CORE_ASSETS = [
     "manifest.json",

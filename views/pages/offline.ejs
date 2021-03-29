@@ -9,14 +9,13 @@ include('../partials/public/head') %> <% } %>
 
     <p>Although, the app might not work as expected. Please connect to the internet for the optimal experience.</p>
 
-    <form action="/" method="GET">
-        <button class="btn">Go to home</button>
-    </form>
+    <button class="btn">
+        <a href="/">Go to home</a>
+    </button>
 
-
-    <form action="/checkout" method="GET">
-        <button class="btn">Go to home</button>
-    </form>
+    <button class="btn checkout-btn">
+        <a href="/checkout">Go to checkout</a>
+    </button>
 </section>
 
 <% if (isDevelopment) { %>
