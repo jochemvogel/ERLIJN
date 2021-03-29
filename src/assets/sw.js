@@ -2,7 +2,6 @@ const CORE_CACHE = 3;
 const CORE_CACHE_NAME = `core-v${CORE_CACHE}`;
 const CORE_ASSETS = [
     "manifest.json",
-    "/img/icons",
     "css/bundle.min.css",
     "js/bundle.min.js",
     "/",
