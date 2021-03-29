@@ -6,18 +6,17 @@
 
 <section>
     <div class="checkout__content">
-        <button class="btn">
-            <a href="/">&larr; Go Back</a>
-        </button>
+        <form action="/" method="GET">
+            <button class="btn">&larr; Go Back</button>
+        </form>
 
         <h2>Checkout</h2>
 
-        <% if ((typeof ticketDepTime === '') || (typeof fromLocation ===
-        'undefined')) { %>
+        <% if ((typeof ticketDepTime === '') || (typeof fromLocation === 'undefined')) { %>
         <p>You haven't booked, yet</p>
+        <% } %>
 
-        <% } %> <% if ((typeof ticketDepTime !== 'undefined') && (typeof
-        fromLocation !== 'undefined')) { %>
+        <% if ((typeof ticketDepTime !== 'undefined') && (typeof fromLocation !== 'undefined')) { %>
 
         <hr />
 

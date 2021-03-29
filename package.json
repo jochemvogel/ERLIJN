@@ -17,7 +17,8 @@
         "watch": "npm-run-all watch:*",
         "watch:css": "chokidar \"src/css/*.css\" --c \"npm run build:css\"",
         "watch:js": "chokidar \"src/js/*.js\" --c \"npm run build:js\"",
-        "watch:assets": "chokidar 'src/**/*.*' --command 'npm run build:static:assets'"
+        "watch:assets": "chokidar 'src/**/*.*' --command 'npm run build:static:assets'",
+        "deploy": "git push && git push heroku master"
     },
     "repository": {
         "type": "git",

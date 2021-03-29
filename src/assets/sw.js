@@ -5,6 +5,7 @@ const CORE_ASSETS = [
     "/img/icons",
     "css/bundle.min.css",
     "js/bundle.min.js",
+    "/",
     "/offline",
     "/checkout"
 ];
