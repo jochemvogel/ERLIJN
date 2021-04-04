@@ -1,8 +1,10 @@
-# Progressive Web Apps @cmda-minor-web · 20-21
+# ERLIJN ✈️
 
 **[Live link](https://erlijn.herokuapp.com/)**
 
 ERLIJN is a search engine for (cheap) flights where you can search and book flights.
+
+_This app is created during the Progressive Web Apps course in the Minor Web Design & Development (20-21). Could use it in the future to learn new things._
 
 ### Table of Contents
 
