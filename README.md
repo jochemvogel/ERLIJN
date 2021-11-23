@@ -28,7 +28,7 @@ Search for a location and click on search. Thereafter a few cards with quotes wi
 
 ### Screenshot
 
-![Frontend ](https://github.com/jochemvogel/minor-web/blob/master/wafs/assets/img/screenshot_app.png)
+![Frontend ](https://github.com/jochemvogel/ERLIJN-wafs/blob/master/assets/img/screenshot_app.png)
 
 <a href="installation"></a>
 
